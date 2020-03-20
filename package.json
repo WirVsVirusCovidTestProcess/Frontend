@@ -74,7 +74,8 @@
     "puppeteer": "^1.20.0",
     "ts-node": "8.5.0",
     "tslint": "^5.20.1",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "minimist": ">=1.2.2"
   },
   "cordova": {
     "platforms": [
