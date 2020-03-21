@@ -10,8 +10,10 @@
   <h2 class="slide-title">
     QR Code scannen
   </h2>
-  <qrcode-view [data]="'this is a little test'"></qrcode-view>
+  <qrcode-view [data]="questionnaireDataXML"></qrcode-view>
   <p>
-    Der QR Code enthält viele tolle Informationen
+    Der QR Code enthält viele tolle Informationen, die hier nochmal dargestellt sind, damit man nicht scannen muss:
+    <br>
+    {{ questionnaireDataXML }}
   </p>
 </ion-content>
