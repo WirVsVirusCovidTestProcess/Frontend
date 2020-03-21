@@ -42,21 +42,19 @@ jobs:
         path: www/
 
   release:
-    build-and-deploy:
-      name: Build and Deploy
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v1
-      - uses: actions/download-artifact@v1
-        with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    name: Release to Azure WebApp
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v1
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-      - run: ls ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    - run: ls ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-      - name: 'Deploy to Azure WebApp'
-        uses: azure/webapps-deploy@v1
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    - name: 'Deploy to Azure WebApp'
+      uses: azure/webapps-deploy@v1
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
