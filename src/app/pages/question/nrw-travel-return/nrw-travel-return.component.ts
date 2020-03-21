@@ -17,6 +17,11 @@ export class NrwTravelReturnComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('nrw-travel-return', this.nrwtravelreturn);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+
+    if (this.nrwtravelreturn == 0) {
+      this.router.navigateByUrl('/questions/travel-crossborder', { replaceUrl: true });
+    } else {
+      this.router.navigateByUrl('/questions/transfer-contact', { replaceUrl: true });
+    }
   }
 }

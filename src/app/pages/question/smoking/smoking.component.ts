@@ -17,6 +17,6 @@ export class SmokingComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('smoking', this.smoking);
-    this.router.navigateByUrl('/questions/factor-work', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/travel', { replaceUrl: true });
   }
 }

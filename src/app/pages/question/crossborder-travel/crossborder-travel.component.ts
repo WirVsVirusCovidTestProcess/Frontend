@@ -17,6 +17,10 @@ export class CrossborderTravelComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('crossborder-travel', this.travel);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    if(this.travel == 0) {
+      this.router.navigateByUrl('/questions/travel-countries', { replaceUrl: true });
+    } else {
+      this.router.navigateByUrl('/questions/transfer-contact', { replaceUrl: true });
+    }
   }
 }

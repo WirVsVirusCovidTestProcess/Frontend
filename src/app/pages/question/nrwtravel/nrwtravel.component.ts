@@ -17,6 +17,6 @@ export class NrwtravelComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('nrwtravel', this.nrwtravel);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/travel-new-return', { replaceUrl: true });
   }
 }
