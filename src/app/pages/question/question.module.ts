@@ -40,6 +40,7 @@ import { FormsModule } from '@angular/forms';
 
 import { QuestionRoutingModule } from './question-routing.module';
 import { QuestionnaireDataService } from '../../services/questionnaireData.service';
+import {QuestionPage} from './question';
 
 @NgModule({
   providers: [
@@ -85,7 +86,9 @@ import { QuestionnaireDataService } from '../../services/questionnaireData.servi
     SymptomsDurationComponent,
     WorkComponent,
     SuspectContactComponent,
-    SuspectContactDateComponent
-  ]
+    SuspectContactDateComponent,
+    QuestionPage
+  ],
+  bootstrap: [QuestionPage],
 })
 export class QuestionModule { }
