@@ -30,3 +30,5 @@ export * from './sniff/sniff.component';
 export * from './sore-throat/sore-throat.component';
 export * from './symptoms-duration/symptoms-duration.component';
 export * from './work/work.component';
+export * from './suspect-contact/suspect-contact.component';
+export * from './suspect-contact-date/suspect-contact-date.component';

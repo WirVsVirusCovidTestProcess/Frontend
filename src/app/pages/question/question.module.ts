@@ -24,6 +24,8 @@ NrwtravelComponent,
 ObesityComponent,
 PregnancyComponent,
 RiskyContactComponent,
+SuspectContactComponent,
+SuspectContactDateComponent,
 RiskyContactDateComponent,
 RiskyTravelComponent,
 ShortBreathComponent,
@@ -77,7 +79,9 @@ import { QuestionRoutingModule } from './question-routing.module';
     SmokingComponent,
     SniffComponent,
     SymptomsDurationComponent,
-    WorkComponent
+    WorkComponent,
+    SuspectContactComponent,
+    SuspectContactDateComponent
   ]
 })
 export class QuestionModule { }
