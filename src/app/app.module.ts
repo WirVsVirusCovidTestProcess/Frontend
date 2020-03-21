@@ -16,7 +16,6 @@ import { QRCodeModule, QRCodeComponent } from 'angularx-qrcode';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { QrCodeViewComponent } from './components/qrcode-view/qrcode-view';
 export function setTranslateLoader(http: HttpClient) {
  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
