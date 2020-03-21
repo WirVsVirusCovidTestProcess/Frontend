@@ -40,7 +40,7 @@ jobs:
           name: app
       
       - name: Path
-        run: ls path/to/artifact
+        run: ls /home/runner/work/Frontend_User/Frontend_User/app/
       
       - name: App Center
         uses: wzieba/AppCenter-Github-Action@v1.0.0
