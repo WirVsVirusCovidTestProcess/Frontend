@@ -3,6 +3,7 @@ import { QuestionnaireAnswer } from '../types/questionnaireAnswer';
 import { Storage } from '@ionic/storage';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 const mockAnswers = [{
   key: 'age',
@@ -138,9 +139,14 @@ export class QuestionnaireDataService {
     return this.answers.size > 0;
   }
 
-  public sendAnswers(): void {
-    this.http.post('https://covid-testprocess.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {})
-      .subscribe((res) => console.log(res));
+  public sendAnswers(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.post('https://covid-testprocess.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {})
+      .subscribe(response =>
+        {
+          resolve(response);
+        });
+    });
   }
 
   public toString(): string {

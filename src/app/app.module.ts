@@ -21,9 +21,7 @@ export function setTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    
-  ],
+  declarations: [ ],
   exports: []
 })
 export class SharedModule {

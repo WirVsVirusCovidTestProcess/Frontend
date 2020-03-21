@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { UserOptions } from '../interfaces/user-options';
 
 
 @Injectable({
@@ -18,20 +19,21 @@ export class UserData {
       this.setUsername(username);
       return window.dispatchEvent(new CustomEvent('user:login'));
     });
+  }*/
+
+  signup(user: UserOptions) {
+/*     this.storage.set('profile', user.Name);
+    this.storage.set('profile', user.Street);
+    this.storage.set('profile', user.Area);
+    this.storage.set('profile', user.Email);
+    this.storage.set('profile', user.Phone); */
   }
 
-  signup(username: string): Promise<any> {
-    return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
-      this.setUsername(username);
-      return window.dispatchEvent(new CustomEvent('user:signup'));
-    });
-  }
-
-  logout(): Promise<any> {
+/*   logout(): Promise<any> {
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
       return this.storage.remove('username');
     }).then(() => {
       window.dispatchEvent(new CustomEvent('user:logout'));
     });
-  } */
+  }  */
 }

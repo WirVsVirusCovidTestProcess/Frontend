@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-riskgroup',
@@ -8,11 +9,15 @@ import { Router } from '@angular/router';
 })
 export class RiskgroupComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private dataService: QuestionnaireDataService) { }
 
   ngOnInit() {}
 
   submit() {
-    this.router.navigateByUrl('/signup');
+    this.dataService.sendAnswers().then((response: string) => {
+      this.router.navigate(['/signup'], { state: {code: response} });
+    });
+    
   }
 }

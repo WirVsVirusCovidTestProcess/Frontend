@@ -14,19 +14,20 @@ import { UserOptions } from '../../interfaces/user-options';
   styleUrls: ['./signup.scss'],
 })
 export class SignupPage {
-  signup: UserOptions = { Name: '', Street: '', Area: '', Email: '', Phone: '' };
+  signup: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
   submitted = false;
 
   constructor(
     public router: Router,
     public userData: UserData
-  ) {}
+  ) {
+    this.signup.Code = this.router.getCurrentNavigation().extras.state.code;
+  }
 
   onSignup(form: NgForm) {
     this.submitted = true;
-    console.log(form);
     if (form.valid) {
-      //this.userData.signup(this.signup.username);
+      this.userData.signup(this.signup);
       this.router.navigateByUrl('/account');
     }
   }

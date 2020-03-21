@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 
 import { UserData } from '../../providers/user-data';
 import { QuestionnaireDataService } from '../../services/questionnaireData.service';
+import { UserOptions } from '../../interfaces/user-options';
 
 
 @Component({
@@ -13,16 +14,18 @@ import { QuestionnaireDataService } from '../../services/questionnaireData.servi
   styleUrls: ['./account.scss'],
 })
 export class AccountPage implements AfterViewInit {
-  username: string;
+  user: UserOptions;
   questionnaireDataXML: string = 'this is corona sample';
+
   constructor(
-    public alertCtrl: AlertController,
     public router: Router,
     public userData: UserData,
+    public storage: Storage,
     private questionnaireDataService: QuestionnaireDataService
   ) { }
 
   ngAfterViewInit() {
+    //this.user = this.storage.getItem('profile');
     this.questionnaireDataXML = this.questionnaireDataService.toXML();
     //this.getUsername();
   }

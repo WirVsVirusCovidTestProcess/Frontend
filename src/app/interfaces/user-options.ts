@@ -1,5 +1,6 @@
 
 export interface UserOptions {
+  Code: string;
   Name: string;
   Street: string;
   Area: string;
