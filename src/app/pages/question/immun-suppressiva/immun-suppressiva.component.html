@@ -2,7 +2,7 @@
 <p>
   Immunsuppresiva nehmen oder bekommen Sie nach einer Organtransplantation, während der Therapie einer Autoimmunerkrankung oder im Rahmen einer Chemotherapie.
 </p>
-<ion-radio-group value="immun-suppressiva">
+<ion-radio-group value="immun-suppressiva"  [(ngModel)]="immunsuppressiva" (ionChange)="submit();">
   <ion-item>
     <ion-label>Ja</ion-label>
     <ion-radio slot="start" value="0"></ion-radio>

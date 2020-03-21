@@ -8,7 +8,7 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./risky-travel.component.scss'],
 })
 export class RiskyTravelComponent implements OnInit {
-  riskycontact: 0;
+  riskytravel: 0;
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }
@@ -16,7 +16,7 @@ export class RiskyTravelComponent implements OnInit {
   ngOnInit() {}
 
   submit() {
-    this.surveyService.setAnswer('risky-travel', this.riskycontact);
+    this.surveyService.setAnswer('risky-travel', this.riskytravel);
     this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
   }
 }

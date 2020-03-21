@@ -1,5 +1,5 @@
 <h2 class="slide-title">Haben Sie Kopfschmerzen?</h2>
-<ion-radio-group value="head-ache">
+<ion-radio-group value="head-ache" [(ngModel)]="headache" (ionChange)="submit();">
   <ion-item>
     <ion-label>Ja</ion-label>
     <ion-radio slot="start" value="0"></ion-radio>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-suspect-contact',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./suspect-contact.component.scss'],
 })
 export class SuspectContactComponent implements OnInit {
+  suspectcontact: 0;
 
-  constructor() { }
+  constructor(private router: Router,
+              private surveyService: QuestionnaireDataService) { }
 
   ngOnInit() {}
 
+  submit() {
+    this.surveyService.setAnswer('suspect-contact', this.suspectcontact);
+    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+  }
 }
