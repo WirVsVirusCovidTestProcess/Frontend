@@ -32,6 +32,8 @@ import { AgeComponent,
         SmokingComponent,
         SniffComponent,
         SymptomsDurationComponent,
+        SuspectContactComponent,
+        SuspectContactDateComponent,
         WorkComponent } from '.';
 
 const routes: Routes = [
@@ -130,6 +132,14 @@ const routes: Routes = [
   {
     path: 'transfer-contact-since',
     component: RiskyContactDateComponent
+  },
+  {
+    path: 'suspect-contact',
+    component: SuspectContactComponent,
+  },
+  {
+    path: 'suspect-contact-date',
+    component: SuspectContactDateComponent,
   },
   {
     path: 'travel-countries',

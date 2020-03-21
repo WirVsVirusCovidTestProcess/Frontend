@@ -1,0 +1,21 @@
+<h2 class="slide-title">Hatten Sie engen Kontakt zu einem Verdachts fall?</h2>
+<p> Ein Verdachtsfall ist eine Person, die aktuell Fieber, Husten oder Atemnot hat und Kontakt zu einem bestätigten Fall hatte oder sich in einer Region mit gehäuften Coronavirus-Infektionen aufgehalten hat. Enger Kontakt mit einem Verdachtsfall bedeutet: </p>
+<ul>
+  <li>Kontakt von Angesicht zu Angesicht länger als 15 Minuten</li>
+  <li>Direkter, physischer Kontakt (Berührung, Händeschütteln, Küssen)</li>
+  <li>Länger als 15 Minuten direkt neben einer infizierten Person (weniger als 2 Meter) verbracht</li>
+  <li>Kontakt mit oder Austausch von Körperflüssigkeiten</li>
+  <li>Teilen einer Wohnung</li>
+</ul>
+
+<ion-radio-group value="risky-contact">
+  <ion-item>
+    <ion-label>Ja</ion-label>
+    <ion-radio slot="start" value="0" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Nein</ion-label>
+    <ion-radio slot="start" value="1" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+</ion-radio-group>
