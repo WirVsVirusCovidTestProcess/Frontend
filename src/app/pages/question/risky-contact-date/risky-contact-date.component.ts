@@ -8,7 +8,7 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./risky-contact-date.component.scss'],
 })
 export class RiskyContactDateComponent implements OnInit {
-  riskycontact: 0;
+  riskycontactdate: 0;
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }
@@ -16,7 +16,7 @@ export class RiskyContactDateComponent implements OnInit {
   ngOnInit() {}
 
   submit() {
-    this.surveyService.setAnswer('risky-contact-date', this.riskycontact);
+    this.surveyService.setAnswer('risky-contact-date', this.riskycontactdate);
     this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
   }
 }

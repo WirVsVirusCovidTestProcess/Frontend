@@ -115,11 +115,11 @@ const routes: Routes = [
         component: LungDiseaseComponent
       },
       {
-        path: 'travel-new-return',
+        path: 'travel-nrw-return',
         component: NrwTravelReturnComponent
       },
       {
-        path: 'travel-new',
+        path: 'travel-nrw',
         component: NrwtravelComponent
       },
       {
