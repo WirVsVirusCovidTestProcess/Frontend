@@ -23,11 +23,6 @@ jobs:
       - name: Build
         run: |
           ionic cordova build android --prod
-      - name: Upload APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: app
-          path: /home/runner/work/Frontend_User/Frontend_User/platforms/android/app/build/outputs/apk/debug/app-debug.apk
 
   publish:
     name: publish
