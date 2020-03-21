@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
-    })
+    }),
+    QRCodeModule,
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
