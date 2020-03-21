@@ -27,4 +27,30 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: /home/runner/work/Frontend/Frontend/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          path: /home/runner/work/Frontend_User/Frontend_User/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download APK
+        uses: actions/download-artifact@v1
+        with:
+          name: app
+      
+      - name: Path
+        run: ls /home/runner/work/Frontend_User/Frontend_User/app/
+      
+      - name: App Center
+        uses: wzieba/AppCenter-Github-Action@v1.0.0
+        with:
+          # App name followed by username e.g. wzieba/Sample-App
+          appName: WirVsVirusCovidTestProcress/Corona-Test-Android
+          token: ${{ secrets.appcenter }}
+          group: Collaborators
+          # Artefact to upload (.apk or .ipa)
+          file: /home/runner/work/Frontend_User/Frontend_User/app/app-debug.apk
+          # Release notes visible on release page
+          # releaseNotes: # optional
+    

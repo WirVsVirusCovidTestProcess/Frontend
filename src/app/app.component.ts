@@ -63,29 +63,6 @@ export class AppComponent implements OnInit {
         this.router.navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
       }
     });
-
-    // this.checkLoginStatus();
-    // this.listenForLoginEvents();
-
-    // this.swUpdate.available.subscribe(async res => {
-    //   const toast = await this.toastCtrl.create({
-    //     message: 'Update available!',
-    //     position: 'bottom',
-    //     buttons: [
-    //       {
-    //         role: 'cancel',
-    //         text: 'Reload'
-    //       }
-    //     ]
-    //   });
-
-    //   await toast.present();
-
-    //   toast
-    //     .onDidDismiss()
-    //     .then(() => this.swUpdate.activateUpdate())
-    //     .then(() => window.location.reload());
-    // });
   }
 
   initializeApp() {
@@ -95,41 +72,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // checkLoginStatus() {
-  //   return this.userData.isLoggedIn().then(loggedIn => {
-  //     return this.updateLoggedInStatus(loggedIn);
-  //   });
-  // }
+  logout() {
+    this.userData.logout().then(() => {
+      return this.router.navigateByUrl('/app/tabs/schedule');
+    });
+  }
 
-  // updateLoggedInStatus(loggedIn: boolean) {
-  //   setTimeout(() => {
-  //     this.loggedIn = loggedIn;
-  //   }, 300);
-  // }
-
-  // listenForLoginEvents() {
-  //   window.addEventListener('user:login', () => {
-  //     this.updateLoggedInStatus(true);
-  //   });
-
-  //   window.addEventListener('user:signup', () => {
-  //     this.updateLoggedInStatus(true);
-  //   });
-
-  //   window.addEventListener('user:logout', () => {
-  //     this.updateLoggedInStatus(false);
-  //   });
-  // }
-
-  // logout() {
-  //   this.userData.logout().then(() => {
-  //     return this.router.navigateByUrl('/app/tabs/schedule');
-  //   });
-  // }
-
-  // openTutorial() {
-  //   this.menu.enable(false);
-  //   this.storage.set('ion_did_tutorial', false);
-  //   this.router.navigateByUrl('/tutorial');
-  // }
+  openQrCodeView() {
+    this.menu.enable(false);
+    this.router.navigateByUrl('/qr-code');
+  }
 }

@@ -1,4 +1,4 @@
-name: Android Build CI
+name: Apple Build CI
 
 on: [push]
 
@@ -27,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: /home/runner/work/Frontend/Frontend/platforms/ios/app/build/outputs/ipa/debug/app-debug.apk
+          path: /home/runner/work/Frontend_User/Frontend_User/platforms/ios/app/build/outputs/ipa/debug/app-debug.apk

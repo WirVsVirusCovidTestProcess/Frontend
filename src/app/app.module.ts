@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 
@@ -38,7 +39,8 @@ export function setTranslateLoader(http: HttpClient) {
        useFactory: (setTranslateLoader),
        deps: [HttpClient]
      }
-    })
+    }),
+    QRCodeModule
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],

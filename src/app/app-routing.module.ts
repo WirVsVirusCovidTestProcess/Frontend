@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
     canLoad: [CheckTutorial]
+  },
+  {
+    path: 'qr-code',
+    loadChildren: () => import('./pages/show-qr-code/show-qr-code.module').then(m => m.ShowQrCodeModule),
   }
 ];
 
