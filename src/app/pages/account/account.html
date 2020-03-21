@@ -57,7 +57,7 @@
         <div>
           Noch kein Ergebnis
         </div>
-        <qrcode-view [data]="questionnaireDataXML"></qrcode-view>
+        <qrcode *ngIf="questionnaireDataXML" [qrdata]="questionnaireDataXML" [width]="512" [errorCorrectionLevel]="'M'"></qrcode>
       </ion-col>
       <ion-col>
         <div>

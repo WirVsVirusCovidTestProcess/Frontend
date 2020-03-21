@@ -1,5 +1,5 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -12,13 +12,28 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { QRCodeModule } from 'angularx-qrcode';
+import { QRCodeModule, QRCodeComponent } from 'angularx-qrcode';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { QrCodeViewComponent } from './components/qrcode-view/qrcode-view';
 export function setTranslateLoader(http: HttpClient) {
  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+@NgModule({
+  declarations: [
+    
+  ],
+  exports: []
+})
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: QRCodeModule,
+      providers: [  ]
+    };
+  }
 }
 
 @NgModule({
@@ -39,11 +54,11 @@ export function setTranslateLoader(http: HttpClient) {
        deps: [HttpClient]
      }
     }),
-    QRCodeModule
+    SharedModule.forRoot()
   ],
-  declarations: [AppComponent,
-    QrCodeViewComponent],
+  declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
