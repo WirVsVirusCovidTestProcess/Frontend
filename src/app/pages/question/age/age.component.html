@@ -1,0 +1,35 @@
+<h2 class="slide-title">
+  Wie alt sind Sie?
+</h2>
+
+<ion-radio-group value="age" [(ngModel)]="age" (ionChange)="submit();">
+  <ion-item>
+    <ion-label>Jünger als 40</ion-label>
+    <ion-radio slot="start" value="0" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>40-50</ion-label>
+    <ion-radio slot="start" value="1" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>51-60</ion-label>
+    <ion-radio slot="start" value="2" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>61-70</ion-label>
+    <ion-radio slot="start" value="3" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>71-80</ion-label>
+    <ion-radio slot="start" value="4" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Über 80</ion-label>
+    <ion-radio slot="start" value="5" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+</ion-radio-group>

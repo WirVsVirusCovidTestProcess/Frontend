@@ -1,0 +1,12 @@
+<h2 class="slide-title">Wie ist Ihre aktuelle Wohnsituation?</h2>
+<ion-radio-group value="situation">
+  <ion-item>
+    <ion-label>Allein wohnend</ion-label>
+    <ion-radio slot="start" value="0" (select)="ionSelect(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Zusammen mit Familie, in einer Wohngemeinschaft oder betreuten Gemeinschaftseinrichtung</ion-label>
+    <ion-radio slot="start" value="1" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+</ion-radio-group>

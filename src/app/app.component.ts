@@ -18,29 +18,29 @@ import { UserData } from './providers/user-data';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  appPages = [
-    {
-      title: 'Schedule',
-      url: '/app/tabs/schedule',
-      icon: 'calendar'
-    },
-    {
-      title: 'Speakers',
-      url: '/app/tabs/speakers',
-      icon: 'people'
-    },
-    {
-      title: 'Map',
-      url: '/app/tabs/map',
-      icon: 'map'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
-    }
-  ];
-  loggedIn = false;
+  // appPages = [
+  //   {
+  //     title: 'Schedule',
+  //     url: '/app/tabs/schedule',
+  //     icon: 'calendar'
+  //   },
+  //   {
+  //     title: 'Speakers',
+  //     url: '/app/tabs/speakers',
+  //     icon: 'people'
+  //   },
+  //   {
+  //     title: 'Map',
+  //     url: '/app/tabs/map',
+  //     icon: 'map'
+  //   },
+  //   {
+  //     title: 'About',
+  //     url: '/app/tabs/about',
+  //     icon: 'information-circle'
+  //   }
+  // ];
+  // loggedIn = false;
   dark = false;
 
   constructor(
@@ -57,29 +57,35 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
 
-  async ngOnInit() {
-    this.checkLoginStatus();
-    this.listenForLoginEvents();
-
-    this.swUpdate.available.subscribe(async res => {
-      const toast = await this.toastCtrl.create({
-        message: 'Update available!',
-        position: 'bottom',
-        buttons: [
-          {
-            role: 'cancel',
-            text: 'Reload'
-          }
-        ]
-      });
-
-      await toast.present();
-
-      toast
-        .onDidDismiss()
-        .then(() => this.swUpdate.activateUpdate())
-        .then(() => window.location.reload());
+ async ngOnInit() {
+    this.storage.get('did_survey').then(res => {
+      if (res === true) {
+        this.router.navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
+      }
     });
+
+    // this.checkLoginStatus();
+    // this.listenForLoginEvents();
+
+    // this.swUpdate.available.subscribe(async res => {
+    //   const toast = await this.toastCtrl.create({
+    //     message: 'Update available!',
+    //     position: 'bottom',
+    //     buttons: [
+    //       {
+    //         role: 'cancel',
+    //         text: 'Reload'
+    //       }
+    //     ]
+    //   });
+
+    //   await toast.present();
+
+    //   toast
+    //     .onDidDismiss()
+    //     .then(() => this.swUpdate.activateUpdate())
+    //     .then(() => window.location.reload());
+    // });
   }
 
   initializeApp() {
@@ -89,41 +95,41 @@ export class AppComponent implements OnInit {
     });
   }
 
-  checkLoginStatus() {
-    return this.userData.isLoggedIn().then(loggedIn => {
-      return this.updateLoggedInStatus(loggedIn);
-    });
-  }
+  // checkLoginStatus() {
+  //   return this.userData.isLoggedIn().then(loggedIn => {
+  //     return this.updateLoggedInStatus(loggedIn);
+  //   });
+  // }
 
-  updateLoggedInStatus(loggedIn: boolean) {
-    setTimeout(() => {
-      this.loggedIn = loggedIn;
-    }, 300);
-  }
+  // updateLoggedInStatus(loggedIn: boolean) {
+  //   setTimeout(() => {
+  //     this.loggedIn = loggedIn;
+  //   }, 300);
+  // }
 
-  listenForLoginEvents() {
-    window.addEventListener('user:login', () => {
-      this.updateLoggedInStatus(true);
-    });
+  // listenForLoginEvents() {
+  //   window.addEventListener('user:login', () => {
+  //     this.updateLoggedInStatus(true);
+  //   });
 
-    window.addEventListener('user:signup', () => {
-      this.updateLoggedInStatus(true);
-    });
+  //   window.addEventListener('user:signup', () => {
+  //     this.updateLoggedInStatus(true);
+  //   });
 
-    window.addEventListener('user:logout', () => {
-      this.updateLoggedInStatus(false);
-    });
-  }
+  //   window.addEventListener('user:logout', () => {
+  //     this.updateLoggedInStatus(false);
+  //   });
+  // }
 
-  logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
-    });
-  }
+  // logout() {
+  //   this.userData.logout().then(() => {
+  //     return this.router.navigateByUrl('/app/tabs/schedule');
+  //   });
+  // }
 
-  openTutorial() {
-    this.menu.enable(false);
-    this.storage.set('ion_did_tutorial', false);
-    this.router.navigateByUrl('/tutorial');
-  }
+  // openTutorial() {
+  //   this.menu.enable(false);
+  //   this.storage.set('ion_did_tutorial', false);
+  //   this.router.navigateByUrl('/tutorial');
+  // }
 }

@@ -1,0 +1,12 @@
+<h2 class="slide-title">Waren Sie in den letzten 4 Wochen außerhalb Deutschlands?</h2>
+<ion-radio-group value="travel-global">
+  <ion-item>
+    <ion-label>Ja</ion-label>
+    <ion-radio slot="start" value="0" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Nein</ion-label>
+    <ion-radio slot="start" value="1" (ionSelect)="radioChecked(1)"></ion-radio>
+  </ion-item>
+</ion-radio-group>

@@ -5,8 +5,12 @@ import { CheckTutorial } from './providers/check-tutorial.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/tutorial',
+    redirectTo: '/questions/factor-age',
     pathMatch: 'full'
+  },
+  {
+    path: 'questions',
+    loadChildren: () => import('./pages/question/question.module').then(m => m.QuestionModule)
   },
   {
     path: 'account',

@@ -1,524 +1,86 @@
- <!-- <ion-header no-border>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content fullscreen="true">
-  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false" [options]="slideOpts">
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" (progress)="updateProgress($event)" [options]="slideOpts">
+
+
     <ion-slide>
-      <h2 class="slide-title">
-        Wie alt sind Sie?
-      </h2>
 
-      <ion-radio-group value="age">
-        <ion-item>
-          <ion-label>Jünger als 40</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>40-50</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>51-60</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>61-70</ion-label>
-          <ion-radio slot="start" value="3"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>71-80</ion-label>
-          <ion-radio slot="start" value="4"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Über 80</ion-label>
-          <ion-radio slot="start" value="5"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Wie ist Ihre aktuelle Wohnsituation?</h2>
-      <ion-radio-group value="situation">
-        <ion-item>
-          <ion-label>Allein wohnend</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Zusammen mit Familie, in einer Wohngemeinschaft oder betreuten Gemeinschaftseinrichtung</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
+      
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Sind Sie in einem der folgenden Bereiche tätig?</h2>
-      <ion-radio-group value="situation">
-        <ion-item>
-          <ion-label>Im medizinischen Bereich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>In einer Gemeinschaftseinrichtung (Schule, Kita, Universität, Heim, etc.)</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Nein, in keinem der genannten Bereiche</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Rauchen Sie?</h2>
-      <ion-radio-group value="smoking">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Sind Sie in den letzten 4 Wochen verreist? (innerhalb Deutschlands oder ins Ausland)</h2>
-      <ion-radio-group value="travel">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Haben Sie sich im Landkreis Heinsberg (Nordrhein-Westfalen) aufgehalten?</h2>
-      <ion-radio-group value="nrw">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">An welchem Tag sind Sie von Ihrer Reise zurückgekehrt?</h2>
-      <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Waren Sie in den letzten 4 Wochen außerhalb Deutschlands?</h2>
-      <ion-radio-group value="travel-global">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Waren Sie in einem der folgenden Länder?</h2>
-      <ion-radio-group value="nrw">
-        <ion-item>
-          <ion-label>Italien</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Iran</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>China</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Südkorea</ion-label>
-          <ion-radio slot="start" value="3"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Frankreich</ion-label>
-          <ion-radio slot="start" value="4"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Österreich</ion-label>
-          <ion-radio slot="start" value="5"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Spanien</ion-label>
-          <ion-radio slot="start" value="6"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>USA</ion-label>
-          <ion-radio slot="start" value="7"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Ich war in keinem der genannten Länder</ion-label>
-          <ion-radio slot="start" value="8"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Hatten Sie engen Kontakt zu einem bestätigtem Fall?</h2>
-      <p> Enger Kontakt mit einem bestätigten Fall bedeutet: </p>
-      <ul>
-        <li>Kontakt von Angesicht zu Angesicht länger als 15 Minuten</li>
-        <li>Direkter, physischer Kontakt (Berührung, Händeschütteln, Küssen)</li>
-        <li>Länger als 15 Minuten direkt neben einer infizierten Person (weniger als 2 Meter) verbracht</li>
-        <li>Kontakt mit oder Austausch von Körperflüssigkeiten</li>
-        <li>Teilen einer Wohnung</li>
-      </ul>
      
-      <ion-radio-group value="nrw">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
+    </ion-slide>
 
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
+    <ion-slide>
+     
+    </ion-slide>
+
+    <ion-slide>
+      
+    </ion-slide>
+
+    <ion-slide>
+      
+    </ion-slide>
+
+    <ion-slide>
 
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">An welchem Tag war der letzte Kontakt?</h2>
-      <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
+      
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Hatten Sie Fieber (über 38 °C) in den letzten 24 Stunden?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
 
-      </ion-radio-group>
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Wie hoch war die höchste Temperatur ca.?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Weniger als 38° C</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>38 °C</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>39 °C</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>40 °C</ion-label>
-          <ion-radio slot="start" value="3"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>41 °C</ion-label>
-          <ion-radio slot="start" value="4"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>42 °C</ion-label>
-          <ion-radio slot="start" value="5"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Über 42 °C</ion-label>
-          <ion-radio slot="start" value="6"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Ich weiß es nicht</ion-label>
-          <ion-radio slot="start" value="7"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+      
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Hatten Sie Fieber (über 38 °C) in den letzten 24 Stunden?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+      
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Haben Sie Schüttelfrost?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+      
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Fühlen Sie sich schlapp oder abgeschlagen?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+     
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Haben Sie Gliederschmerzen?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
 
-      </ion-radio-group>
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Haben Sie anhaltenden Husten?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+     
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Haben Sie Schnupfen?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
 
-      </ion-radio-group>
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Haben Sie Durchfall?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
 
-      </ion-radio-group>
+
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Haben Sie Halsschmerzen?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+      
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Haben Sie Kopfschmerzen?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+      
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Sind Sie schneller außer Atem als sonst?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Seit wann haben Sie die Symptome?</h2>
-      <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Wurde bei Ihnen eine chronische Lungenerkrankung diagnostiziert?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Ich weiß es nicht</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Haben Sie Diabetes?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Ich weiß es nicht</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
-    </ion-slide>
-
-    <ion-slide>
-      <h2 class="slide-title">Wurde bei Ihnen eine Herzerkrankung diagnostiziert?</h2>
-      <ion-radio-group value="fever">
-        <ion-item>
-          <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Ich weiß es nicht</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
-        </ion-item>
-
-      </ion-radio-group>
+      
     </ion-slide>
 
     <ion-slide>
@@ -526,19 +88,18 @@
       <ion-radio-group value="fever">
         <ion-item>
           <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
   
         <ion-item>
           <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Ich weiß es nicht</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
+          <ion-radio slot="start" value="2" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
-
       </ion-radio-group>
     </ion-slide>
 
@@ -547,19 +108,18 @@
       <ion-radio-group value="fever">
         <ion-item>
           <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
   
         <ion-item>
           <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Ich weiß es nicht</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
+          <ion-radio slot="start" value="2" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
-
       </ion-radio-group>
     </ion-slide>
 
@@ -568,19 +128,18 @@
       <ion-radio-group value="fever">
         <ion-item>
           <ion-label>Ja</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
   
         <ion-item>
           <ion-label>Nein</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Ich weiß es nicht</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
+          <ion-radio slot="start" value="2" (ionSelect)="radioChecked(1)"></ion-radio>
         </ion-item>
-
       </ion-radio-group>
     </ion-slide>
 
@@ -605,6 +164,26 @@
           <ion-label>Ich weiß es nicht</ion-label>
           <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
+      </ion-radio-group>
+    </ion-slide>
+
+    <ion-slide>
+      <h2 class="slide-title">Haben Sie sich im Zeitraum von Oktober 2019 bis heute gegen Grippe impfen lassen?</h2>
+      <ion-radio-group value="fever">
+        <ion-item>
+          <ion-label>Ja</ion-label>
+          <ion-radio slot="start" value="0"></ion-radio>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Nein</ion-label>
+          <ion-radio slot="start" value="1"></ion-radio>
+        </ion-item>
+
+        <ion-button fill="clear" (click)="startApp()">
+          Abschließen
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
 
       </ion-radio-group>
     </ion-slide>
@@ -622,15 +201,36 @@
           <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
 
+        <ion-button fill="clear" (click)="startApp()">
+          Abschließen
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+
       </ion-radio-group>
     </ion-slide>
 
     <ion-slide>
-      <h2 class="slide-title">Ready to Play?</h2>
-      <ion-button fill="clear" (click)="startApp()">
-        Continue
-        <ion-icon slot="end" name="arrow-forward"></ion-icon>
-      </ion-button>
+      <h2 class="slide-title">Haben Sie sich im Zeitraum von Oktober 2019 bis heute gegen Grippe impfen lassen?</h2>
+      <ion-radio-group value="fever">
+        <ion-item>
+          <ion-label>Ja</ion-label>
+          <ion-radio slot="start" value="0"></ion-radio>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Nein</ion-label>
+          <ion-radio slot="start" value="1"></ion-radio>
+        </ion-item>
+
+        <ion-button fill="clear" (click)="startApp()">
+          Abschließen
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+
+      </ion-radio-group>
     </ion-slide>
+
   </ion-slides>
+
+  <ion-progress-bar color="primary" value={{progress}}></ion-progress-bar>
 </ion-content>

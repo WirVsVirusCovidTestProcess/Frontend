@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MenuController, IonSlides } from '@ionic/angular';
@@ -10,13 +10,17 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'tutorial.html',
   styleUrls: ['./tutorial.scss'],
 })
-export class TutorialPage {
+export class TutorialPage implements OnInit {
   showSkip = true;
+
+  progress = 0.0;
 
   slideOpts = {
     initialSlide: 1,
     speed: 400,
-    watchSlidesProgress: true
+    watchSlidesProgress: true,
+    noSwiping: true,
+    allowTouchMove: false
   };
 
   @ViewChild('slides', { static: true }) slides: IonSlides;
@@ -25,7 +29,11 @@ export class TutorialPage {
     public menu: MenuController,
     public router: Router,
     public storage: Storage
-  ) {}
+  ) { }
+
+  ngOnInit(): void {
+
+  }
 
   startApp() {
     this.router
@@ -37,6 +45,16 @@ export class TutorialPage {
     event.target.isEnd().then(isEnd => {
       this.showSkip = !isEnd;
     });
+  }
+
+  radioChecked(value) {
+    console.log(value);
+    this.slides.slideNext();
+  }
+
+  onProgress(event) {
+    console.log(event);
+    this.progress = event * 100;
   }
 
   ionViewWillEnter() {
