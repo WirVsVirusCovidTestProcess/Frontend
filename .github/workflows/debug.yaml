@@ -39,4 +39,20 @@ jobs:
          uses: actions/setup-java@v1
          with:
            java-version: 1.8
-    
+           
+       - uses: actions/download-artifact@v1
+       - name: Download APK
+         with:
+          name: app
+       
+       - uses: wzieba/AppCenter-Github-Action@v1.0.0
+       - name: App Center
+         with:
+           # App name followed by username e.g. wzieba/Sample-App
+           appName: Corona-Test-Android
+           token: ${{ secrets.appcenter }}
+           group: WirVsVirusCovidTestProcress
+           # Artefact to upload (.apk or .ipa)
+           file: app-debug.apk
+           # Release notes visible on release page
+           # releaseNotes: # optional
