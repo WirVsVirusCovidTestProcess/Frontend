@@ -14,4 +14,8 @@ export class AboutPage {
   start() {
     this.router.navigateByUrl('/about/details', { replaceUrl: true });
   }
+
+  showQRCode() {
+    this.router.navigateByUrl('/qr-code');
+  }
 }
