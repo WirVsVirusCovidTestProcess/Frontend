@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-risky-contact-date',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./risky-contact-date.component.scss'],
 })
 export class RiskyContactDateComponent implements OnInit {
+  riskycontact: 0;
 
-  constructor() { }
+  constructor(private router: Router,
+              private surveyService: QuestionnaireDataService) { }
 
   ngOnInit() {}
 
+  submit() {
+    this.surveyService.setAnswer('risky-contact-date', this.riskycontact);
+    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-age',
@@ -7,16 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./age.component.scss'],
 })
 export class AgeComponent implements OnInit {
-
   age: 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private surveyService: QuestionnaireDataService) { }
 
   ngOnInit() {}
 
   submit() {
-    console.log(this.age);
-    this.router.navigateByUrl('/questions/factor-work', { replaceUrl: true });
+    this.surveyService.setAnswer('age', this.age);
+    this.router.navigateByUrl('/questions/situation', { replaceUrl: true });
   }
-
 }

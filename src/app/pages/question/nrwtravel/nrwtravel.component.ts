@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-nrwtravel',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nrwtravel.component.scss'],
 })
 export class NrwtravelComponent implements OnInit {
+  nrwtravel: 0;
 
-  constructor() { }
+  constructor(private router: Router,
+              private surveyService: QuestionnaireDataService) { }
 
   ngOnInit() {}
 
+  submit() {
+    this.surveyService.setAnswer('nrwtravel', this.nrwtravel);
+    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+  }
 }

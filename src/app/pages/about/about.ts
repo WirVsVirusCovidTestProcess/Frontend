@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-
-import { PopoverController } from '@ionic/angular';
-
-import { PopoverPage } from '../about-popover/about-popover';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-about',
@@ -10,20 +7,11 @@ import { PopoverPage } from '../about-popover/about-popover';
   styleUrls: ['./about.scss'],
 })
 export class AboutPage {
-  location = 'madison';
-  conferenceDate = '2047-05-17';
 
-  selectOptions = {
-    header: 'Select a Location'
-  };
+  constructor(private router: Router) { }
 
-  constructor(public popoverCtrl: PopoverController) { }
 
-  async presentPopover(event: Event) {
-    const popover = await this.popoverCtrl.create({
-      component: PopoverPage,
-      event
-    });
-    await popover.present();
+  start() {
+    this.router.navigateByUrl('/about/details', { replaceUrl: true });
   }
 }

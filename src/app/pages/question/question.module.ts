@@ -37,8 +37,12 @@ WorkComponent } from '.';
 import { FormsModule } from '@angular/forms';
 
 import { QuestionRoutingModule } from './question-routing.module';
+import { QuestionnaireDataService } from '../../services/questionnaireData.service';
 
 @NgModule({
+  providers: [
+    QuestionnaireDataService
+  ],
   imports: [
     CommonModule,
     IonicModule,
@@ -77,7 +81,8 @@ import { QuestionRoutingModule } from './question-routing.module';
     SmokingComponent,
     SniffComponent,
     SymptomsDurationComponent,
-    WorkComponent
+    WorkComponent,
+    
   ]
 })
 export class QuestionModule { }

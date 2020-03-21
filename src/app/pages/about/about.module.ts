@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AboutPage } from './about';
-import { PopoverPage } from '../about-popover/about-popover';
 import { AboutPageRoutingModule } from './about-routing.module';
+import { InformationComponent } from './information/information.component';
 
 @NgModule({
   imports: [
@@ -14,8 +14,9 @@ import { AboutPageRoutingModule } from './about-routing.module';
     IonicModule,
     AboutPageRoutingModule
   ],
-  declarations: [AboutPage, PopoverPage],
-  entryComponents: [PopoverPage],
+  declarations: [
+    AboutPage,
+    InformationComponent],
   bootstrap: [AboutPage],
 })
 export class AboutModule {}

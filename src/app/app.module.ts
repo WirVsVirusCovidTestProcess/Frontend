@@ -14,8 +14,6 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { QRCodeModule } from 'angularx-qrcode';
 
-
-
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 export function setTranslateLoader(http: HttpClient) {

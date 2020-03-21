@@ -72,12 +72,6 @@ export class AppComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
-    });
-  }
-
   openQrCodeView() {
     this.menu.enable(false);
     this.router.navigateByUrl('/qr-code');

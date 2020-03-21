@@ -36,7 +36,7 @@ import { AgeComponent,
 
 const routes: Routes = [
   {
-    path: 'factor-age',
+    path: 'factors-age',
     component: AgeComponent
   },
   {
@@ -160,7 +160,7 @@ const routes: Routes = [
     component: SymptomsDurationComponent
   },
   {
-    path: 'factors-work',
+    path: 'factor-work',
     component: WorkComponent
   }
 ];
