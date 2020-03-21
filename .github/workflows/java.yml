@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: /home/runner/work/Frontend/Frontend/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          path: /home/runner/work/Frontend_User/Frontend_User/platforms/android/app/build/outputs/apk/debug/app-debug.apk
   release:
     if: ${{ github.ref == 'master' }}
     needs: build
