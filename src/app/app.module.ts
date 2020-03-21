@@ -16,6 +16,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { QrCodeViewComponent } from './components/qrcode-view/qrcode-view';
 export function setTranslateLoader(http: HttpClient) {
  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -40,7 +41,8 @@ export function setTranslateLoader(http: HttpClient) {
     }),
     QRCodeModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+    QrCodeViewComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
   bootstrap: [AppComponent]
 })
