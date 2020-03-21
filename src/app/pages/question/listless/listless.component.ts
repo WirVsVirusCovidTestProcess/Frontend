@@ -17,6 +17,6 @@ export class ListlessComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('listless', this.listless);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/symptoms-body', { replaceUrl: true });
   }
 }

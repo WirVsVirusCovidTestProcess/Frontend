@@ -17,6 +17,6 @@ export class SuspectContactComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('suspect-contact', this.suspectcontact);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/suspect-contact-date', { replaceUrl: true });
   }
 }

@@ -17,6 +17,11 @@ export class RiskyContactComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('risky-contact', this.riskycontact);
-    this.router.navigateByUrl('/questions/travel-nrw', { replaceUrl: true });
+
+    if(this.riskycontact == 0){
+      this.router.navigateByUrl('/questions/transfer-contact-since', { replaceUrl: true });
+    } else {
+      this.router.navigateByUrl('/questions/suspect-contact', { replaceUrl: true });
+    }
   }
 }

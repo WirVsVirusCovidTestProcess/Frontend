@@ -17,6 +17,6 @@ export class PregnancyComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('pregnancy', this.pregnancy);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/factor-cortisol', { replaceUrl: true });
   }
 }

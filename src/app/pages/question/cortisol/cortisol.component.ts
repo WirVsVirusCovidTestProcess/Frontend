@@ -17,6 +17,6 @@ export class CortisolComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('cortisol', this.cortisol);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/factor-immunesuppressive', { replaceUrl: true });
   }
 }

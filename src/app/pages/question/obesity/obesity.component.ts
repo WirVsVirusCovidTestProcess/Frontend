@@ -17,6 +17,6 @@ export class ObesityComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('obesity', this.obesity);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/factor-pregnancy', { replaceUrl: true });
   }
 }

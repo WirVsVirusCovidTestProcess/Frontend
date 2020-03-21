@@ -17,6 +17,6 @@ export class CoughComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('cough', this.cough);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/symptom-sniff', { replaceUrl: true });
   }
 }

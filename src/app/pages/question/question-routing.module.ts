@@ -41,7 +41,7 @@ const routes: Routes = [
   {
     path: '',
     component: QuestionPage,
-    children: [
+  },
       {
         path: 'factors-age',
         component: AgeComponent
@@ -140,11 +140,11 @@ const routes: Routes = [
       },
       {
         path: 'suspect-contact',
-        component: SuspectContactComponent,
+        component: SuspectContactComponent
       },
       {
         path: 'suspect-contact-date',
-        component: SuspectContactDateComponent,
+        component: SuspectContactDateComponent
       },
       {
         path: 'travel-countries',
@@ -178,8 +178,6 @@ const routes: Routes = [
         path: 'factor-work',
         component: WorkComponent
       }
-    ]
-  },
 ];
 
 @NgModule({

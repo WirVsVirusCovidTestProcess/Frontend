@@ -1,41 +1,63 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Signup</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
-  <div class="signup-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic Logo">
-  </div>
+  <h3>Weitere Informationen</h3>
 
   <form #signupForm="ngForm" novalidate>
     <ion-list lines="none">
       <ion-item>
-        <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel" required>
+        <!-- <ion-label position="stacked" color="primary">Username</ion-label> -->
+        <ion-input [(ngModel)]="signup.Name" name="Name" type="text" #Name="ngModel" placeholder="Vor- und Nachname" required>
         </ion-input>
       </ion-item>
-      <ion-text color="danger">
+<!--       <ion-text color="danger">
         <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
-          Username is required
+          Name ist erforderlich
         </p>
-      </ion-text>
+      </ion-text> -->
 
       <ion-item>
-        <ion-label position="stacked" color="primary">Password</ion-label>
-        <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
+        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
+        <ion-input [(ngModel)]="signup.Street" name="Street" type="text" #Street="ngModel" placeholder="Strasse / Hausnummer" required>
         </ion-input>
       </ion-item>
-      <ion-text color="danger">
+<!--       <ion-text color="danger">
         <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
-          Password is required
+          Strasse und Hausnummer sind erforderlich
         </p>
-      </ion-text>
+      </ion-text> -->
+
+      <ion-item>
+        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
+        <ion-input [(ngModel)]="signup.Area" name="Area" type="text" #Area="ngModel" placeholder="PLZ / Ort" required>
+        </ion-input>
+      </ion-item>
+<!--       <ion-text color="danger">
+        <p [hidden]="Area.valid || submitted == false" class="ion-padding-start">
+          PLZ und Ort sind erforderlich
+        </p>
+      </ion-text> -->
+
+      <ion-item>
+        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
+        <ion-input [(ngModel)]="signup.Email" name="Email" type="text" #Email="ngModel" placeholder="E-Mail" required>
+        </ion-input>
+      </ion-item>
+<!--       <ion-text color="danger">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          E-Mail ist erforderlich
+        </p>
+      </ion-text> -->
+
+      <ion-item>
+        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
+        <ion-input [(ngModel)]="signup.Phone" name="Phone" type="text" #Phone="ngModel" placeholder="Telefon" required>
+        </ion-input>
+      </ion-item>
+<!--       <ion-text color="danger">
+        <p [hidden]="Phone.valid || submitted == false" class="ion-padding-start">
+          Telefonnummer ist erforderlich
+        </p>
+      </ion-text> -->
     </ion-list>
 
     <div class="ion-padding">

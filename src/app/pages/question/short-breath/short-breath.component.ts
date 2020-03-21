@@ -17,6 +17,6 @@ export class ShortBreathComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('short-breath', this.shortbreath);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/symptom-duration', { replaceUrl: true });
   }
 }

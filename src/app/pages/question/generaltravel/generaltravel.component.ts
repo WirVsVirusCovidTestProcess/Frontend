@@ -18,7 +18,7 @@ export class GeneraltravelComponent implements OnInit {
   submit() {
     this.surveyService.setAnswer('generaltravel', this.generaltravel);
     if (this.generaltravel) {
-      this.router.navigateByUrl('/questions/travel-new', { replaceUrl: true });
+      this.router.navigateByUrl('/questions/travel-nrw', { replaceUrl: true });
     } else {
       this.router.navigateByUrl('/questions/transfer-contact', { replaceUrl: true });
     }

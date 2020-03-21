@@ -17,6 +17,6 @@ export class HeadAcheComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('head-ache', this.headache);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/symptom-breath', { replaceUrl: true });
   }
 }

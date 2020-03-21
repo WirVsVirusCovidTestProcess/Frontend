@@ -17,6 +17,6 @@ export class DiabetesComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('diabetes', this.diabetes);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/factor-heart', { replaceUrl: true });
   }
 }

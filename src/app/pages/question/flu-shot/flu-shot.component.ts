@@ -17,6 +17,6 @@ export class FluShotComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('flu-shot', this.flushot);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/about/what-now', { replaceUrl: true });
   }
 }

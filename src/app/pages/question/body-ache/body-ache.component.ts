@@ -17,6 +17,6 @@ export class BodyAcheComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('body-ache', this.bodyache);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/symptoms-cough', { replaceUrl: true });
   }
 }

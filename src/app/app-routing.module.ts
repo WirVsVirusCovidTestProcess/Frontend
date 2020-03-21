@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckTutorial } from './providers/check-tutorial.service';
 
 const routes: Routes = [
   {
@@ -25,10 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/support/support.module').then(m => m.SupportModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
-  },
-  {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignUpModule)
   },
@@ -43,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

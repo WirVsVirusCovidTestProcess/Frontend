@@ -17,6 +17,6 @@ export class SymptomsDurationComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('symptoms-duration', this.symptoms);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/factor-lungs', { replaceUrl: true });
   }
 }

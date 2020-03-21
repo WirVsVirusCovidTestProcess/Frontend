@@ -17,6 +17,6 @@ export class ChillsComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('chills', this.chills);
-    this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
+    this.router.navigateByUrl('/questions/symptoms-listless', { replaceUrl: true });
   }
 }
