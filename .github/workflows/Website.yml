@@ -43,6 +43,7 @@ jobs:
 
   release:
     name: Release to Azure WebApp
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v1
