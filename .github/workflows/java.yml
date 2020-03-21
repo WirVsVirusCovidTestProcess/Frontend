@@ -28,3 +28,24 @@ jobs:
         with:
           name: app
           path: /home/runner/work/Frontend/Frontend/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+  release:
+    if: ${{ github.ref == 'master' }}
+    needs: build
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Download APK
+        uses: actions/download-artifact@v1
+        with:
+          name: app
+      - name: App Center
+        uses: wzieba/AppCenter-Github-Action@v1.0.0
+        with:
+          # App name followed by username e.g. wzieba/Sample-App
+          appName: Corona-Test-Android
+          token: ${{ secrets.appcenter }}
+          group: WirVsVirusCovidTestProcress
+          # Artefact to upload (.apk or .ipa)
+          file: app-debug.apk
+          # Release notes visible on release page
+          # releaseNotes: # optional
+    
