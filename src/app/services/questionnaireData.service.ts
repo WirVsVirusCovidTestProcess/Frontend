@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { QuestionnaireAnswer } from '../types/questionnaireAnswer';
 import { Storage } from '@ionic/storage';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 const mockAnswers = [{
   key: 'age',
@@ -60,12 +62,11 @@ const answerKeyXMLMap: Map<string, string> = new Map<string, string>([
 export class QuestionnaireDataService {
   private answers: Map<string, any>;
   private id?: string;
-  private storage: Storage;
 
   constructor(
-    offlineStorage: Storage,
+    private storage: Storage,
+    private http: HttpClient
   ) {
-    this.storage = offlineStorage;
     this.answers = new Map<string, any>();
 
     // Load answers from storage
@@ -138,7 +139,7 @@ export class QuestionnaireDataService {
   }
 
   public sendAnswers(): void {
-    // TODO send answers to backend
+    this.http.post(environment.apiUrl + '/api/SaveQuestionData', this.toJSON()).subscribe((res) => console.log(res));
   }
 
   public toString(): string {
