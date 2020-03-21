@@ -141,9 +141,10 @@ export class QuestionnaireDataService {
 
   public sendAnswers(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post('https://covid-testprocess.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {})
-      .subscribe(response =>
-        {
+      this.http.post('https://covid-testprocess.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
+        Answers: this.toJSON()
+      })
+      .subscribe(response => {
           resolve(response);
         });
     });
@@ -154,11 +155,10 @@ export class QuestionnaireDataService {
   }
 
   public toJSON(): any {
-    return this.getAnswers().reduce((result, answer) => {
+    return this.getAnswers().map((answer) => {
       const code = answerKeyXMLMap.get(answer.key) || answer.key;
-      result[code] = answer.value;
-      return result;
-    }, {});
+      return { [code]: answer.value };
+    });
   }
 
   public toXML(): string {
