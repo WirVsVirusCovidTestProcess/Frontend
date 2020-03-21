@@ -139,7 +139,8 @@ export class QuestionnaireDataService {
   }
 
   public sendAnswers(): void {
-    this.http.post(environment.apiUrl + '/api/SaveQuestionData', this.toJSON()).subscribe((res) => console.log(res));
+    this.http.post('https://covid-testprocess.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {})
+      .subscribe((res) => console.log(res));
   }
 
   public toString(): string {

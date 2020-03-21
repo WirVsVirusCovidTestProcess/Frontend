@@ -3,5 +3,11 @@
   "type": "angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies": [
+    {
+      "path": "https://covid-testprocess.azurewebsites.net/api",
+      "proxyUrl": "https://covid-testprocess.azurewebsites.net/api"
+    }
+  ]
 }
