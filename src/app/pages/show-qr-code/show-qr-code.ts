@@ -36,4 +36,8 @@ export class ShowQrCodePage {
   getQuestionnaireData() {
     this.questionnaireDataXML = this.questionnaireDataService.toXML();
   }
+
+  sendData() {
+    this.questionnaireDataService.sendAnswers();
+  }
 }

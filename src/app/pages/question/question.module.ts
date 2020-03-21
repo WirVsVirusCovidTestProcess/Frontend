@@ -24,6 +24,8 @@ NrwtravelComponent,
 ObesityComponent,
 PregnancyComponent,
 RiskyContactComponent,
+SuspectContactComponent,
+SuspectContactDateComponent,
 RiskyContactDateComponent,
 RiskyTravelComponent,
 ShortBreathComponent,
@@ -82,7 +84,8 @@ import { QuestionnaireDataService } from '../../services/questionnaireData.servi
     SniffComponent,
     SymptomsDurationComponent,
     WorkComponent,
-    
+    SuspectContactComponent,
+    SuspectContactDateComponent
   ]
 })
 export class QuestionModule { }

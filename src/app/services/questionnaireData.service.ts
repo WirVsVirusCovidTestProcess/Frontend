@@ -1,25 +1,59 @@
 import { Injectable } from '@angular/core';
 import { QuestionnaireAnswer } from '../types/questionnaireAnswer';
 import { Storage } from '@ionic/storage';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 const mockAnswers = [{
-  key: 'contact',
+  key: 'age',
   value: 0,
 }, {
-  key: 'other',
+  key: 'situation',
   value: 1,
 }, {
-  key: 'test',
+  key: 'work',
   value: 2,
 }, {
-  key: 'invalid',
+  key: 'lung-disease',
   value: 0,
 }];
 
 // Define mapping between questionnaire keys and xml keys
 const answerKeyXMLMap: Map<string, string> = new Map<string, string>([
-  ['contact', 'A'],
-  ['other', 'B'],
+  ['age', 'A'],
+  ['situation', 'B'],
+  ['work', 'C'],
+  ['smoking', 'D'],
+  ['generaltravel', 'E'],
+  ['nrwtravel', 'F'],
+  ['nrw-travel-return', 'R1'],
+  ['travel-global', 'G'],
+  ['risky-travel', 'H'],
+  ['risky-contact', 'Q'],
+  ['risky-contact-date', 'B8'],
+  ['fever', 'T'],
+  ['fever-temperature', 'V'],
+  ['chills', 'W'],
+  ['listless', 'X'],
+  ['body-ache', 'Y'],
+  ['cough', 'Z'],
+  ['sniff', 'A0'],
+  ['diarrhea', 'A1'],
+  ['sore-throat', 'A2'],
+  ['head-ache', 'A3'],
+  ['short-breath', 'B7'],
+  ['symptoms-duration', 'B9'],
+  ['lung-disease', 'A5'],
+  ['diabetes', 'A6'],
+  ['heart-disease', 'A7'],
+  ['obesity', 'A8'],
+  ['pregnancy', 'A9'],
+  ['cortisol', 'B0'],
+  ['immun-suppressiva', 'B1'],
+  ['flu-shot', 'B2'],
+  ['suspect-contact', 'R0'],
+  ['suspect-contact-date', 'B8'],
+  ['fever-temperature', 'unkown'], // could not get to question in cov app to get the code
 ]);
 
 @Injectable({
@@ -28,12 +62,11 @@ const answerKeyXMLMap: Map<string, string> = new Map<string, string>([
 export class QuestionnaireDataService {
   private answers: Map<string, any>;
   private id?: string;
-  private storage: Storage;
 
   constructor(
-    offlineStorage: Storage,
+    private storage: Storage,
+    private http: HttpClient
   ) {
-    this.storage = offlineStorage;
     this.answers = new Map<string, any>();
 
     // Load answers from storage
@@ -106,7 +139,7 @@ export class QuestionnaireDataService {
   }
 
   public sendAnswers(): void {
-    // TODO send answers to backend
+    this.http.post(environment.apiUrl + '/api/SaveQuestionData', this.toJSON()).subscribe((res) => console.log(res));
   }
 
   public toString(): string {
