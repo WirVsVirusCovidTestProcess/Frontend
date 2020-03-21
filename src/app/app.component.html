@@ -103,6 +103,12 @@
               <ion-label>Show Tutorial</ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="openQrCodeView()" detail="false">
+              <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+              <ion-label>Show QR Code</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>

@@ -1,0 +1,17 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="closeView()">Schließen</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" class="centered">
+  <h2 class="slide-title">
+    QR Code scannen
+  </h2>
+  <qrcode-view [data]="'this is a little test'"></qrcode-view>
+  <p>
+    Der QR Code enthält viele tolle Informationen
+  </p>
+</ion-content>

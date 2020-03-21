@@ -126,4 +126,9 @@ export class AppComponent implements OnInit {
     this.storage.set('ion_did_tutorial', false);
     this.router.navigateByUrl('/tutorial');
   }
+
+  openQrCodeView() {
+    this.menu.enable(false);
+    this.router.navigateByUrl('/qr-code');
+  }
 }
