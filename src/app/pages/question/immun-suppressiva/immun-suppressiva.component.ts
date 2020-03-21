@@ -8,7 +8,7 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./immun-suppressiva.component.scss'],
 })
 export class ImmunSuppressivaComponent implements OnInit {
-  immun: 0;
+  immunsuppressiva: 0;
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }
@@ -16,7 +16,7 @@ export class ImmunSuppressivaComponent implements OnInit {
   ngOnInit() {}
 
   submit() {
-    this.surveyService.setAnswer('immun-suppressiva', this.immun);
+    this.surveyService.setAnswer('immun-suppressiva', this.immunsuppressiva);
     this.router.navigateByUrl('/questions/nrw', { replaceUrl: true });
   }
 }
