@@ -13,6 +13,12 @@ import { Storage } from '@ionic/storage';
 export class TutorialPage {
   showSkip = true;
 
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    watchSlidesProgress: true
+  };
+
   @ViewChild('slides', { static: true }) slides: IonSlides;
 
   constructor(

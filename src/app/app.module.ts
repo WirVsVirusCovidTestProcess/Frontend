@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -13,6 +13,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+export function setTranslateLoader(http: HttpClient) {
+ return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,6 +29,13 @@ import { FormsModule } from '@angular/forms';
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
+    }),
+    TranslateModule.forRoot({
+      loader: {
+       provide: TranslateLoader,
+       useFactory: (setTranslateLoader),
+       deps: [HttpClient]
+     }
     })
   ],
   declarations: [AppComponent],
