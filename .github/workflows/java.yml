@@ -46,7 +46,7 @@ jobs:
           token: ${{ secrets.appcenter }}
           group: Collaborators
           # Artefact to upload (.apk or .ipa)
-          file: app-debug.apk
+          file: /home/runner/work/Frontend_User/Frontend_User/app/app-debug.apk
           # Release notes visible on release page
           # releaseNotes: # optional
     
