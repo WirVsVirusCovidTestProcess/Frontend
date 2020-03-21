@@ -12,7 +12,7 @@ export class InformationComponent implements OnInit {
 
   ngOnInit() {}
 
-  start(){
+  start() {
     this.router.navigateByUrl('/questions/factors-age', { replaceUrl: true });
   }
 
