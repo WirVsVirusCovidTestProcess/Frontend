@@ -28,8 +28,8 @@ jobs:
         with:
           name: app
           path: /home/runner/work/Frontend_User/Frontend_User/platforms/android/app/build/outputs/apk/debug/app-debug.apk
-  release:
-    name: release
+  publish:
+    name: publish
     runs-on: [ubuntu-latest]
     
     if: ${{ github.ref == 'master' }}
