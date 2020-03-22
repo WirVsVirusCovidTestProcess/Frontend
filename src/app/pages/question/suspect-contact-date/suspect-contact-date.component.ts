@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
+import {formatDate} from '../../../util';
 
 @Component({
   selector: 'app-suspect-contact-date',
@@ -8,7 +9,7 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./suspect-contact-date.component.scss'],
 })
 export class SuspectContactDateComponent implements OnInit {
-  suspectcontact = Date.now();
+  suspectcontact = new Date().toISOString();
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }
@@ -20,7 +21,7 @@ export class SuspectContactDateComponent implements OnInit {
   }
 
   submit() {
-    this.surveyService.setAnswer('suspect-contact-date', this.suspectcontact);
+    this.surveyService.setAnswer('suspect-contact-date', formatDate(this.suspectcontact));
     this.router.navigateByUrl('/questions/symptom-fever', { replaceUrl: true });
   }
 }

@@ -140,18 +140,24 @@ export class QuestionnaireDataService {
       }, { responseType: 'text' })
       .subscribe(response => {
           this.setId(response);
-          this.http.post('https://covid-testprocess.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
-            Token: response
-          }).subscribe((data: any) => {
-            this.riskScore = data.riskScore;
-            if (!this.riskScore) {
-              // TODO remove mock risk score
-              this.riskScore = Math.floor(Math.random() * 11);
-            }
-            this.saveToStorage();
-            resolve(data);
-          });
+          resolve(response);
         });
+    });
+  }
+
+  public loadRiskScore(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.post('https://covid-testprocess.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
+        Token: this.id
+      }).subscribe((data: any) => {
+        if (!data.riskScore) {
+          reject('RiskScore not available yet');
+        } else {
+          this.riskScore = data.riskScore;
+          this.saveToStorage();
+          resolve(data.riskScore);
+        }
+      });
     });
   }
 

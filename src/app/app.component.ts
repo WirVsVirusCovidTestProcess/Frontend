@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { MenuController, Platform } from '@ionic/angular';
 
@@ -46,7 +46,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private storage: Storage
+    private storage: Storage,
+    private route: ActivatedRoute
   ) {
     this.initializeApp();
   }
@@ -60,7 +61,7 @@ export class AppComponent implements OnInit {
 
   this.storage.get('id').then(res => {
     if (res) {
-      this.router.navigateByUrl('/signup', { replaceUrl: true });
+      this.router.navigateByUrl('/about/what-now', { replaceUrl: true });
     }
   });
   }

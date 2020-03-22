@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
+import {formatDate} from '../../../util';
 
 @Component({
   selector: 'app-symptoms-duration',
@@ -8,7 +9,7 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./symptoms-duration.component.scss'],
 })
 export class SymptomsDurationComponent implements OnInit {
-  symptoms = Date.now();
+  symptoms = new Date().toISOString();
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }
@@ -20,7 +21,7 @@ export class SymptomsDurationComponent implements OnInit {
   }
 
   submit() {
-    this.surveyService.setAnswer('symptoms-duration', this.symptoms);
+    this.surveyService.setAnswer('symptoms-duration', formatDate(this.symptoms));
     this.router.navigateByUrl('/questions/factor-lungs', { replaceUrl: true });
   }
 }

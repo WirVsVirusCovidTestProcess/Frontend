@@ -13,7 +13,7 @@ export class WhatNowComponent implements OnInit {
 
   ngOnInit() {
     if (!this.dataService.getRiskScore()) {
-      setTimeout(this.sendAnswers.bind(this), 1000);
+      setTimeout(this.sendAnswers.bind(this), 500);
     } else {
       this.decide();
     }
@@ -21,7 +21,16 @@ export class WhatNowComponent implements OnInit {
 
   sendAnswers() {
     this.dataService.sendAnswers().then(() => {
+      this.startPollingRiskScore();
+    });
+  }
+
+  startPollingRiskScore() {
+    this.dataService.loadRiskScore().then((risk) => {
       this.decide();
+    })
+    .catch(() => {
+      setTimeout(this.startPollingRiskScore.bind(this), 1000);
     });
   }
 
