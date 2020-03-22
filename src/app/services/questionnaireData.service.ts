@@ -5,20 +5,6 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs';
 
-const mockAnswers = [{
-  key: 'age',
-  value: 0,
-}, {
-  key: 'situation',
-  value: 1,
-}, {
-  key: 'work',
-  value: 2,
-}, {
-  key: 'lung-disease',
-  value: 0,
-}];
-
 // Define mapping between questionnaire keys and xml keys
 const answerKeyXMLMap: Map<string, string> = new Map<string, string>([
   ['age', 'A'],
@@ -63,6 +49,7 @@ const answerKeyXMLMap: Map<string, string> = new Map<string, string>([
 export class QuestionnaireDataService {
   private answers: Map<string, any>;
   private id?: string;
+  private riskScore?: number;
 
   constructor(
     private storage: Storage,
@@ -72,9 +59,8 @@ export class QuestionnaireDataService {
 
     // Load answers from storage
     this.storage.get('questionnaire_answers').then((values: QuestionnaireAnswer[]) => {
-      // mock answers
       if (!values || values.length === 0) {
-        values = mockAnswers;
+        values = [];
       }
       values.forEach((value) => {
         this.answers.set(value.key, value.value);
@@ -83,6 +69,11 @@ export class QuestionnaireDataService {
     this.storage.get('id').then((id) => {
       if (id) {
         this.id = id;
+      }
+    });
+    this.storage.get('riskScore').then((riskScore) => {
+      if (riskScore) {
+        this.riskScore = riskScore;
       }
     });
   }
@@ -128,11 +119,14 @@ export class QuestionnaireDataService {
     this.saveToStorage();
   }
 
-  private saveToStorage(): Promise<any> {
-    return Promise.all([
-      this.storage.set('id', this.id),
-      this.storage.set('questionnaire_answers', this.getAnswers()),
-    ]);
+  public getRiskScore(): number | undefined {
+    return this.riskScore;
+  }
+
+  private saveToStorage(): void {
+    this.storage.set('questionnaire_answers', this.getAnswers());
+    this.storage.set('id', this.id);
+    this.storage.set('riskScore', this.riskScore);
   }
 
   public hasAnswers(): boolean {
@@ -143,11 +137,25 @@ export class QuestionnaireDataService {
     return new Promise((resolve, reject) => {
       this.http.post('https://covid-testprocess.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
         Answers: this.toJSON()
-      })
+      }, { responseType: 'text' })
       .subscribe(response => {
-          resolve(response);
+          this.http.post('https://covid-testprocess.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
+            Token: response
+          }).subscribe((data: any) => {
+            this.riskScore = data.riskScore;
+            if (!this.riskScore) {
+              // TODO remove mock risk score
+              this.riskScore = Math.floor(Math.random() * 11);
+            }
+            this.saveToStorage();
+            resolve(data);
+          });
         });
     });
+  }
+
+  public getId(): string {
+    return this.id;
   }
 
   public toString(): string {
@@ -156,9 +164,12 @@ export class QuestionnaireDataService {
 
   public toJSON(): any {
     return this.getAnswers().map((answer) => {
-      const code = answerKeyXMLMap.get(answer.key) || answer.key;
+      const code = answerKeyXMLMap.get(answer.key);
+      if (!code || code.length === 0 || !answer.value) {
+        return undefined;
+      }
       return { [code]: answer.value };
-    });
+    }).filter(a => !!a);
   }
 
   public toXML(): string {
