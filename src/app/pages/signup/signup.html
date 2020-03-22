@@ -56,8 +56,7 @@
 
                 <ion-list lines="none">
                   <ion-item *ngFor="let contact of contacts;let i=index">
-                    <ion-input [(ngModel)]="contact" name="Name" type="text" #Name="ngModel"
-                               placeholder="Kontaktperson">
+                    <ion-input [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" type="text" placeholder="Kontaktperson">
                     </ion-input>
                   </ion-item>
                 </ion-list>

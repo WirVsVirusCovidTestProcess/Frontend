@@ -31,7 +31,7 @@ export class SignupPage implements OnInit {
 
   onSignup(form: NgForm) {
     this.submitted = true;
-    console.log(this.signup);
+    console.log(this.contacts);
     if (form.valid) {
       this.userData.signup(this.signup);
       this.userData.cacheContacts(this.contacts);

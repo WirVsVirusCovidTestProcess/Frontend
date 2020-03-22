@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserData } from '../../providers/user-data';
@@ -11,10 +11,13 @@ import { UserOptions } from '../../interfaces/user-options';
   templateUrl: 'account.html',
   styleUrls: ['./account.scss'],
 })
-export class AccountPage implements AfterViewInit {
+export class AccountPage implements AfterViewInit, AfterContentInit {
   public user: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
   questionnaireDataXML = 'NO DATA';
   contacts: Array<string> = [''];
+
+  result = null;
+  appointment = null;
 
   constructor(
     public router: Router,
@@ -22,10 +25,35 @@ export class AccountPage implements AfterViewInit {
     private questionnaireDataService: QuestionnaireDataService
   ) { }
 
+
+  ngAfterContentInit(): void {
+    this.delay(3000).then(any=>{
+      this.appointment = {
+        time: '24.03.2020 17:30 Uhr',
+        street: 'Marienhospital Stuttgart',
+        area: '70189 Stuttgart'
+      }
+    }).then(next => 
+      this.delay(5000).then(any => {
+        this.result = false;
+      })
+    );
+  }
+
+  getstatus(result) {
+    if(result == null) {
+      return 'light';
+    } else if(result) {
+      return 'danger';
+    } else {
+      return 'success';
+    }
+  }
+
   ngAfterViewInit() {
     this.userData.contactCache().then(res => {
       console.log(res);
-
+  
       if(res !== null)
         this.contacts = res;
     });
@@ -46,6 +74,10 @@ export class AccountPage implements AfterViewInit {
     this.questionnaireDataXML = this.questionnaireDataService.toXML();
   }
 
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(()=>resolve(), ms));
+  }
+
   addContact() {
 
     this.userData.clearCaches();
@@ -53,51 +85,4 @@ export class AccountPage implements AfterViewInit {
       this.contacts.push('');
     }
   }
-
-  // Present an alert with the current username populated
-  // clicking OK will update the username and display it
-  // clicking Cancel will close the alert and do nothing
-  /* async changeUsername() {
-    const alert = await this.alertCtrl.create({
-      header: 'Change Username',
-      buttons: [
-        'Cancel',
-        {
-          text: 'Ok',
-          handler: (data: any) => {
-            this.userData.setUsername(data.username);
-            this.getUsername();
-          }
-        }
-      ],
-      inputs: [
-        {
-          type: 'text',
-          name: 'username',
-          value: this.username,
-          placeholder: 'username'
-        }
-      ]
-    });
-    await alert.present();
-  } */
-
-  /* getUsername() {
-    this.userData.getUsername().then((username) => {
-      this.username = username;
-    });
-  }
-
-  changePassword() {
-    console.log('Clicked to change password');
-  }
-
-  logout() {
-    this.userData.logout();
-    this.router.navigateByUrl('/login');
-  }
-
-  support() {
-    this.router.navigateByUrl('/support');
-  } */
 }
