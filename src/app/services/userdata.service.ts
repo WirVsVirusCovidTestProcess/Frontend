@@ -16,8 +16,7 @@ export class UserdataService {
         "FirstName": user.Name,
         "LastName": user.Name,
         "Email": user.Email,
-        "Location": user.Street + ' ' + user.Area,
-        "Token": user.Code
+        "Location": user.Street + ' ' + user.Area
       })
       .subscribe(response => {
           resolve(response);

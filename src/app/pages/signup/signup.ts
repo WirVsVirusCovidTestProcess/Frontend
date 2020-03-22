@@ -18,6 +18,8 @@ export class SignupPage implements OnInit {
   signup: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
   submitted = false;
 
+  contacts: Array<string> = ['', ''];
+
   constructor(
     public router: Router,
     public userData: UserData,
@@ -33,6 +35,12 @@ export class SignupPage implements OnInit {
     if (form.valid) {
       this.userData.signup(this.signup);
       this.router.navigateByUrl('/account');
+    }
+  }
+
+  addContact() {
+    if (this.contacts.length < 5) {
+      this.contacts.push('');
     }
   }
 }

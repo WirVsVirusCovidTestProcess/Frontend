@@ -11,3 +11,16 @@
 .list {
   margin-bottom: 0;
 }
+
+ion-item {
+  margin: 15px 0px 15px 0px;
+  border: 1px solid gray;
+}
+
+ion-col {
+  padding: 20px;
+}
+
+ion-col:nth-child(2) {
+  padding-top: 72px;
+}

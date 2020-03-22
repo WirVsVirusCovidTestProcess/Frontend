@@ -24,6 +24,8 @@ export class UserData {
 
   signup(user: UserOptions) {
     this.storage.set('user', user);
-    this.userData.saveUser(user);
+    let response = this.userData.saveUser(user);
+
+    // TODO: Save Token
   }
 }

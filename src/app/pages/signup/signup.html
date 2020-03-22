@@ -1,68 +1,55 @@
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <h3>Weitere Informationen</h3>
 
-  <h3>Weitere Informationen</h3>
+        <form #signupForm="ngForm" novalidate>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-input [(ngModel)]="signup.Name" name="Name" type="text" #Name="ngModel" placeholder="Vor- und Nachname" required>
+              </ion-input>
+            </ion-item>
 
-  <form #signupForm="ngForm" novalidate>
-    <ion-list lines="none">
-      <ion-item>
-        <!-- <ion-label position="stacked" color="primary">Username</ion-label> -->
-        <ion-input [(ngModel)]="signup.Name" name="Name" type="text" #Name="ngModel" placeholder="Vor- und Nachname" required>
-        </ion-input>
-      </ion-item>
-<!--       <ion-text color="danger">
-        <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
-          Name ist erforderlich
-        </p>
-      </ion-text> -->
+            <ion-item>
+              <ion-input [(ngModel)]="signup.Street" name="Street" type="text" #Street="ngModel" placeholder="Strasse / Hausnummer" required>
+              </ion-input>
+            </ion-item>
 
-      <ion-item>
-        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
-        <ion-input [(ngModel)]="signup.Street" name="Street" type="text" #Street="ngModel" placeholder="Strasse / Hausnummer" required>
-        </ion-input>
-      </ion-item>
-<!--       <ion-text color="danger">
-        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
-          Strasse und Hausnummer sind erforderlich
-        </p>
-      </ion-text> -->
+            <ion-item>
+              <ion-input [(ngModel)]="signup.Area" name="Area" type="text" #Area="ngModel" placeholder="PLZ / Ort" required>
+              </ion-input>
+            </ion-item>
 
-      <ion-item>
-        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
-        <ion-input [(ngModel)]="signup.Area" name="Area" type="text" #Area="ngModel" placeholder="PLZ / Ort" required>
-        </ion-input>
-      </ion-item>
-<!--       <ion-text color="danger">
-        <p [hidden]="Area.valid || submitted == false" class="ion-padding-start">
-          PLZ und Ort sind erforderlich
-        </p>
-      </ion-text> -->
+            <ion-item>
+              <ion-input [(ngModel)]="signup.Email" name="Email" type="text" #Email="ngModel" placeholder="E-Mail" compose email required>
+              </ion-input>
+            </ion-item>
 
-      <ion-item>
-        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
-        <ion-input [(ngModel)]="signup.Email" name="Email" type="text" #Email="ngModel" placeholder="E-Mail" compose email required>
-        </ion-input>
-      </ion-item>
-<!--       <ion-text color="danger">
-        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
-          E-Mail ist erforderlich
-        </p>
-      </ion-text> -->
+            <ion-item>
+              <ion-input [(ngModel)]="signup.Phone" name="Phone" type="text" #Phone="ngModel" placeholder="Telefon" required>
+              </ion-input>
+            </ion-item>
 
-      <ion-item>
-        <!-- <ion-label position="stacked" color="primary">Password</ion-label> -->
-        <ion-input [(ngModel)]="signup.Phone" name="Phone" type="text" #Phone="ngModel" placeholder="Telefon" required>
-        </ion-input>
-      </ion-item>
-<!--       <ion-text color="danger">
-        <p [hidden]="Phone.valid || submitted == false" class="ion-padding-start">
-          Telefonnummer ist erforderlich
-        </p>
-      </ion-text> -->
-    </ion-list>
+          </ion-list>
 
-    <div class="ion-padding">
-      <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Create</ion-button>
-    </div>
-  </form>
+          <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Anmelden</ion-button>
+        </form>
+      </ion-col>
+
+      <ion-col size="4">
+    
+        <ion-list lines="none" >
+          <ion-item *ngFor="let contact of contacts;let i=index">
+            <ion-input [(ngModel)]="contact" name="Name" type="text" #Name="ngModel" placeholder="Kontaktperson">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-button *ngIf="contacts.length < 5 " (click)="addContact()">Hinzufügen</ion-button>
+      </ion-col>
+   
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
