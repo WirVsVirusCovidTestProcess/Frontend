@@ -53,11 +53,15 @@ export class AppComponent implements OnInit {
 
  async ngOnInit() {
   this.storage.get('user').then(res => {
-    this.router.navigateByUrl('/account', { replaceUrl: true });
+    if (res) {
+      this.router.navigateByUrl('/account', { replaceUrl: true });
+    }
   });
 
   this.storage.get('id').then(res => {
-    this.router.navigateByUrl('/signup', { replaceUrl: true });
+    if (res) {
+      this.router.navigateByUrl('/signup', { replaceUrl: true });
+    }
   });
   }
 

@@ -139,6 +139,7 @@ export class QuestionnaireDataService {
         Answers: this.toJSON()
       }, { responseType: 'text' })
       .subscribe(response => {
+          this.setId(response);
           this.http.post('https://covid-testprocess.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
             Token: response
           }).subscribe((data: any) => {
