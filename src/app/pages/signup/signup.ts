@@ -34,6 +34,7 @@ export class SignupPage implements OnInit {
     console.log(this.signup);
     if (form.valid) {
       this.userData.signup(this.signup);
+      this.userData.cacheContacts(this.contacts);
       this.router.navigateByUrl('/account');
     }
   }

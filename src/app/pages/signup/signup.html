@@ -42,7 +42,7 @@
     
         <ion-list lines="none" >
           <ion-item *ngFor="let contact of contacts;let i=index">
-            <ion-input [(ngModel)]="contact" name="Name" type="text" #Name="ngModel" placeholder="Kontaktperson">
+            <ion-input [(ngModel)]="contact" name="Name" type="text" placeholder="Kontaktperson">
             </ion-input>
           </ion-item>
         </ion-list>
@@ -52,14 +52,5 @@
    
     </ion-row>
   </ion-grid>
-
-            <div class="ion-padding">
-              <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Create</ion-button>
-            </div>
-          </form>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
 </ion-card>
 </ion-content>

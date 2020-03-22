@@ -13,7 +13,8 @@ import { UserOptions } from '../../interfaces/user-options';
 })
 export class AccountPage implements AfterViewInit {
   public user: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
-  questionnaireDataXML = 'this is corona sample';
+  questionnaireDataXML = 'NO DATA';
+  contacts: Array<string> = [''];
 
   constructor(
     public router: Router,
@@ -22,20 +23,35 @@ export class AccountPage implements AfterViewInit {
   ) { }
 
   ngAfterViewInit() {
+    this.userData.contactCache().then(res => {
+      console.log(res);
+
+      if(res !== null)
+        this.contacts = res;
+    });
+
     this.userData.retrieve().then(result => {
       // mock result
-      result = {
+/*       result = {
         Name: 'Max Mustermann',
         Street: 'Hauptstraße 1',
         Code: 'Ps5ClfN10hHw1K38zzTo1zf6Y+KLXL',
         Area: '12345 Berlin',
         Email: 'test@example.com',
         Phone: '+49 123456789'
-      };
+      }; */
       this.user = result;
     });
 
     this.questionnaireDataXML = this.questionnaireDataService.toXML();
+  }
+
+  addContact() {
+
+    this.userData.clearCaches();
+    if (this.contacts.length < 5) {
+      this.contacts.push('');
+    }
   }
 
   // Present an alert with the current username populated

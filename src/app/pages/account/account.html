@@ -76,7 +76,7 @@
 
                   <ion-item>
                     <ion-label>
-                      <p>ABXY-1234</p>
+                      <p>{{user.Code}}</p>
                     </ion-label>
                   </ion-item>
                 </ion-list>
@@ -85,18 +85,13 @@
                     Kontaktpersonen
                   </ion-list-header>
 
-                  <ion-item>
+                  <ion-item *ngFor="let contact of contacts">
                     <ion-label>
-                      <p>Hans Meier</p>
-                    </ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>
-                      <p>Michaela Mustermann</p>
+                      <p>{{contact}}</p>
                     </ion-label>
                   </ion-item>
                 </ion-list>
-                <ion-button>Kontakt hinzufügen</ion-button>
+                <ion-button *ngIf="contacts.length < 5 " (click)="addContact()">Kontakt hinzufügen</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>

@@ -17,7 +17,7 @@ export class UserdataService {
         "LastName": user.Name,
         "Email": user.Email,
         "Location": user.Street + ' ' + user.Area
-      })
+      }, { responseType: 'text' })
       .subscribe(response => {
           resolve(response);
         });
