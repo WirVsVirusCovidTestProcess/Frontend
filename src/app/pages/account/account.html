@@ -1,66 +1,107 @@
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-avatar>
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-        </ion-avatar>
+  <ion-row>
+    <ion-col size-md="10" offset-md="1">
 
-        <ion-list lines="none">
-          <ion-list-header>
-            Über dich
-          </ion-list-header>
-         
-          <ion-item detail="false">
-            <ion-icon slot="start" name="person-outline"></ion-icon>
-            <ion-label>
-              {{user.Name}}
-            </ion-label>
-          </ion-item>
+      <ion-card>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" size-lg="4" class="left-side">
+                <ion-avatar>
+                  <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"/>
+                </ion-avatar>
 
-          <ion-item detail="false">
-            <ion-icon slot="start" name="home-outline"></ion-icon>
-            <ion-label>
-              {{user.Street}}
-            </ion-label>
-          </ion-item>
+                <ion-list lines="none">
+                  <ion-item detail="false">
+                    <ion-icon slot="start" name="person-outline"></ion-icon>
+                    <ion-label>
+                      {{user.Name}}
+                    </ion-label>
+                  </ion-item>
 
-          <ion-item detail="false">
-            <ion-icon slot="start" name="compass-outline"></ion-icon>
-            <ion-label>
-              {{user.Area}}
-            </ion-label>
-          </ion-item>
+                  <ion-item detail="false">
+                    <ion-icon slot="start" name="home-outline"></ion-icon>
+                    <ion-label>
+                      {{user.Street}}
+                    </ion-label>
+                  </ion-item>
 
-          <ion-item detail="false">
-            <ion-icon slot="start" name="mail-outline"></ion-icon>
-            <ion-label>
-              {{user.Email}}
-            </ion-label>
-          </ion-item>
+                  <ion-item detail="false">
+                    <ion-icon slot="start" name="compass-outline"></ion-icon>
+                    <ion-label>
+                      {{user.Area}}
+                    </ion-label>
+                  </ion-item>
 
-          <ion-item detail="false">
-            <ion-icon slot="start" name="call-outline"></ion-icon>
-            <ion-label>
-              {{user.Phone}}
-            </ion-label>
-          </ion-item>
+                  <ion-item detail="false">
+                    <ion-icon slot="start" name="mail-outline"></ion-icon>
+                    <ion-label>
+                      {{user.Email}}
+                    </ion-label>
+                  </ion-item>
 
-        </ion-list>
-      </ion-col>
-      <ion-col size="auto">
-        <div>
-          Noch kein Ergebnis
-        </div>
-        <qrcode *ngIf="questionnaireDataXML" [qrdata]="questionnaireDataXML" [width]="512" [errorCorrectionLevel]="'M'"></qrcode>
-      </ion-col>
-      <ion-col>
-        <div>
-          <p>Patientennummer</p>
-          <p>ABXY-1234</p>
-        </div>
-        <ion-button>Kontakt hinzufügen</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+                  <ion-item detail="false">
+                    <ion-icon slot="start" name="call-outline"></ion-icon>
+                    <ion-label>
+                      {{user.Phone}}
+                    </ion-label>
+                  </ion-item>
+
+                </ion-list>
+              </ion-col>
+              <ion-col size="12" size-lg="5" class="center">
+                <ion-button size="large" disabled="true" expand="block" color="light">
+                  Noch kein Ergebnis
+                </ion-button>
+                <qrcode *ngIf="questionnaireDataXML" [qrdata]="questionnaireDataXML" [width]="256"
+                        [errorCorrectionLevel]="'M'" class="qr-code"></qrcode>
+                <ion-card color="secondary">
+                  <ion-card-header>
+                    <ion-card-title>
+                      Termin
+                    </ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <p><b>24.03.2020 17:30 Uhr</b></p>
+                    <p>Marienhospital Stuttgart</p>
+                    <p>70189 Stuttgart</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col size-lg="3" size="12" class="right-side">
+                <ion-list>
+                  <ion-list-header>
+                    Patientennummer
+                  </ion-list-header>
+
+                  <ion-item>
+                    <ion-label>
+                      <p>ABXY-1234</p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+                <ion-list>
+                  <ion-list-header>
+                    Kontaktpersonen
+                  </ion-list-header>
+
+                  <ion-item>
+                    <ion-label>
+                      <p>Hans Meier</p>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <p>Michaela Mustermann</p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+                <ion-button>Kontakt hinzufügen</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
