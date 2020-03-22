@@ -20,9 +20,9 @@ import { WhatNowComponent } from './what-now/what-now.component';
   declarations: [
     AboutPage,
     InformationComponent,
-  GreenlightComponent,
-RiskgroupComponent,
-WhatNowComponent],
+    GreenlightComponent,
+    RiskgroupComponent,
+    WhatNowComponent],
   bootstrap: [AboutPage],
 })
 export class AboutModule {}

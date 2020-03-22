@@ -10,14 +10,11 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
 export class RiskgroupComponent implements OnInit {
 
   constructor(private router: Router,
-    private dataService: QuestionnaireDataService) { }
+              private dataService: QuestionnaireDataService) { }
 
   ngOnInit() {}
 
   submit() {
-    this.dataService.sendAnswers().then((response: string) => {
-      this.router.navigate(['/signup'], { state: {code: response} });
-    });
-    
+    this.router.navigate(['/signup']);
   }
 }

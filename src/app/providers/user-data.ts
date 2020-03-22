@@ -14,26 +14,13 @@ export class UserData {
     public storage: Storage
   ) { }
 
-/*   login(username: string): Promise<any> {
-    return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
-      this.setUsername(username);
-      return window.dispatchEvent(new CustomEvent('user:login'));
+  retrieve(): Promise<UserOptions> {
+    return new Promise<UserOptions>((resolve, reject) => {
+      resolve(this.storage.get('user'));
     });
-  }*/
-
-  signup(user: UserOptions) {
-/*     this.storage.set('profile', user.Name);
-    this.storage.set('profile', user.Street);
-    this.storage.set('profile', user.Area);
-    this.storage.set('profile', user.Email);
-    this.storage.set('profile', user.Phone); */
   }
 
-/*   logout(): Promise<any> {
-    return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
-      return this.storage.remove('username');
-    }).then(() => {
-      window.dispatchEvent(new CustomEvent('user:logout'));
-    });
-  }  */
+  signup(user: UserOptions) {
+    this.storage.set('user', user);
+  }
 }

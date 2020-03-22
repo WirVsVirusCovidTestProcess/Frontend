@@ -1,8 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AlertController } from '@ionic/angular';
-
 import { UserData } from '../../providers/user-data';
 import { QuestionnaireDataService } from '../../services/questionnaireData.service';
 import { UserOptions } from '../../interfaces/user-options';
@@ -14,24 +12,22 @@ import { UserOptions } from '../../interfaces/user-options';
   styleUrls: ['./account.scss'],
 })
 export class AccountPage implements AfterViewInit {
-  user: UserOptions;
+  public user: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
   questionnaireDataXML: string = 'this is corona sample';
 
   constructor(
     public router: Router,
     public userData: UserData,
-    public storage: Storage,
     private questionnaireDataService: QuestionnaireDataService
   ) { }
 
   ngAfterViewInit() {
-    //this.user = this.storage.getItem('profile');
-    this.questionnaireDataXML = this.questionnaireDataService.toXML();
-    //this.getUsername();
-  }
+    this.userData.retrieve().then(result => {
+      console.log(result);
+      this.user = result;
+    });
 
-  updatePicture() {
-    console.log('Clicked to update picture');
+    this.questionnaireDataXML = this.questionnaireDataService.toXML();
   }
 
   // Present an alert with the current username populated
@@ -62,7 +58,7 @@ export class AccountPage implements AfterViewInit {
     await alert.present();
   } */
 
-  g/* etUsername() {
+  /* getUsername() {
     this.userData.getUsername().then((username) => {
       this.username = username;
     });
