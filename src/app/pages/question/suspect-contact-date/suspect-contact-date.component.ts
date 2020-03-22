@@ -15,7 +15,7 @@ export class SuspectContactDateComponent implements OnInit {
 
   ngOnInit() {}
 
-  update(event){
+  update(event) {
 
   }
 

@@ -15,6 +15,10 @@ export class SymptomsDurationComponent implements OnInit {
 
   ngOnInit() {}
 
+  update(event) {
+
+  }
+
   submit() {
     this.surveyService.setAnswer('symptoms-duration', this.symptoms);
     this.router.navigateByUrl('/questions/factor-lungs', { replaceUrl: true });
