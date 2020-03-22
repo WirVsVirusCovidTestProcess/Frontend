@@ -33,7 +33,7 @@ export class AccountPage implements AfterViewInit, AfterContentInit {
         street: 'Marienhospital Stuttgart',
         area: '70189 Stuttgart'
       }
-    }).then(next => 
+    }).then(next =>
       this.delay(5000).then(any => {
         this.result = true;
       })
@@ -52,10 +52,8 @@ export class AccountPage implements AfterViewInit, AfterContentInit {
 
   ngAfterViewInit() {
     this.userData.contactCache().then(res => {
-      console.log(res);
-  
-      if(res !== null)
-        this.contacts = res;
+        // mock contacts
+        this.contacts = ['Max Mustermann', 'Michael Müller'];
     });
 
     this.userData.retrieve().then(result => {
