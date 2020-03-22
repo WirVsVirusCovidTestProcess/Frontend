@@ -35,7 +35,7 @@ export class AccountPage implements AfterViewInit, AfterContentInit {
       }
     }).then(next => 
       this.delay(5000).then(any => {
-        this.result = false;
+        this.result = true;
       })
     );
   }
