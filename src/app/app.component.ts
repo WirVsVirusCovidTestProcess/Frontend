@@ -8,8 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Storage } from '@ionic/storage';
 
-import { UserData } from './providers/user-data';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -48,8 +46,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private storage: Storage,
-    private userData: UserData,
+    private storage: Storage
   ) {
     this.initializeApp();
   }
