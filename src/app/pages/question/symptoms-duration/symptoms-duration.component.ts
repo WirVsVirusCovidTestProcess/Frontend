@@ -8,7 +8,7 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./symptoms-duration.component.scss'],
 })
 export class SymptomsDurationComponent implements OnInit {
-  symptoms: 0;
+  symptoms = Date.now();
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }

@@ -8,12 +8,16 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./suspect-contact-date.component.scss'],
 })
 export class SuspectContactDateComponent implements OnInit {
-  suspectcontact: 0;
+  suspectcontact = Date.now();
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }
 
   ngOnInit() {}
+
+  update(event){
+
+  }
 
   submit() {
     this.surveyService.setAnswer('suspect-contact-date', this.suspectcontact);

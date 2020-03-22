@@ -1,4 +1,4 @@
 <h2 class="slide-title">An welchem Tag war der letzte Kontakt?</h2>
-<ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
+<ion-datetime [(value)]="riskycontactdate" (ionChange)="update($event)"></ion-datetime>
 
 <ion-button (click)="submit()">Weiter</ion-button>

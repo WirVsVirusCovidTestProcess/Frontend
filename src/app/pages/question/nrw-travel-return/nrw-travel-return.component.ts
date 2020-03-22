@@ -8,12 +8,16 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
   styleUrls: ['./nrw-travel-return.component.scss'],
 })
 export class NrwTravelReturnComponent implements OnInit {
-  nrwtravelreturn: 0;
+  nrwtravelreturn = Date.now();
 
   constructor(private router: Router,
               private surveyService: QuestionnaireDataService) { }
 
   ngOnInit() {}
+
+  update(event){
+    
+  }
 
   submit() {
     this.surveyService.setAnswer('nrw-travel-return', this.nrwtravelreturn);
