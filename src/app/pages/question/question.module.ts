@@ -43,9 +43,6 @@ import { QuestionnaireDataService } from '../../services/questionnaireData.servi
 import {QuestionPage} from './question';
 
 @NgModule({
-  providers: [
-    QuestionnaireDataService
-  ],
   imports: [
     CommonModule,
     IonicModule,
