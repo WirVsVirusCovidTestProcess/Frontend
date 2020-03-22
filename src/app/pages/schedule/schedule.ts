@@ -72,7 +72,7 @@ export class SchedulePage implements OnInit {
   }
 
   async addFavorite(slidingItem: HTMLIonItemSlidingElement, sessionData: any) {
-    if (this.user.hasFavorite(sessionData.name)) {
+/*     if (this.user.hasFavorite(sessionData.name)) {
       // Prompt to remove favorite
       this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
     } else {
@@ -94,7 +94,7 @@ export class SchedulePage implements OnInit {
 
       // Present the toast at the bottom of the page
       await toast.present();
-    }
+    } */
 
   }
 
@@ -115,7 +115,7 @@ export class SchedulePage implements OnInit {
           text: 'Remove',
           handler: () => {
             // they want to remove this session from their favorites
-            this.user.removeFavorite(sessionData.name);
+            // this.user.removeFavorite(sessionData.name);
             this.updateSchedule();
 
             // close the sliding item and hide the option buttons

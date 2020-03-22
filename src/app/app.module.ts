@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -12,7 +12,26 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { QRCodeModule } from 'angularx-qrcode';
+import { QRCodeModule, QRCodeComponent } from 'angularx-qrcode';
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+export function setTranslateLoader(http: HttpClient) {
+ return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+@NgModule({
+  declarations: [ ],
+  exports: []
+})
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: QRCodeModule,
+      providers: [  ]
+    };
+  }
+}
 
 @NgModule({
   imports: [
@@ -25,10 +44,18 @@ import { QRCodeModule } from 'angularx-qrcode';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
-    QRCodeModule,
+    TranslateModule.forRoot({
+      loader: {
+       provide: TranslateLoader,
+       useFactory: (setTranslateLoader),
+       deps: [HttpClient]
+     }
+    }),
+    SharedModule.forRoot()
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+

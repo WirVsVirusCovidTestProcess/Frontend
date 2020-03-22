@@ -1,9 +1,9 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AlertController } from '@ionic/angular';
-
 import { UserData } from '../../providers/user-data';
+import { QuestionnaireDataService } from '../../services/questionnaireData.service';
+import { UserOptions } from '../../interfaces/user-options';
 
 
 @Component({
@@ -12,26 +12,36 @@ import { UserData } from '../../providers/user-data';
   styleUrls: ['./account.scss'],
 })
 export class AccountPage implements AfterViewInit {
-  username: string;
+  public user: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
+  questionnaireDataXML = 'this is corona sample';
 
   constructor(
-    public alertCtrl: AlertController,
     public router: Router,
-    public userData: UserData
+    public userData: UserData,
+    private questionnaireDataService: QuestionnaireDataService
   ) { }
 
   ngAfterViewInit() {
-    this.getUsername();
-  }
+    this.userData.retrieve().then(result => {
+      // mock result
+      result = {
+        Name: 'Max Mustermann',
+        Street: 'Hauptstraße 1',
+        Code: 'Ps5ClfN10hHw1K38zzTo1zf6Y+KLXL',
+        Area: '12345 Berlin',
+        Email: 'test@example.com',
+        Phone: '+49 123456789'
+      };
+      this.user = result;
+    });
 
-  updatePicture() {
-    console.log('Clicked to update picture');
+    this.questionnaireDataXML = this.questionnaireDataService.toXML();
   }
 
   // Present an alert with the current username populated
   // clicking OK will update the username and display it
   // clicking Cancel will close the alert and do nothing
-  async changeUsername() {
+  /* async changeUsername() {
     const alert = await this.alertCtrl.create({
       header: 'Change Username',
       buttons: [
@@ -54,9 +64,9 @@ export class AccountPage implements AfterViewInit {
       ]
     });
     await alert.present();
-  }
+  } */
 
-  getUsername() {
+  /* getUsername() {
     this.userData.getUsername().then((username) => {
       this.username = username;
     });
@@ -73,5 +83,5 @@ export class AccountPage implements AfterViewInit {
 
   support() {
     this.router.navigateByUrl('/support');
-  }
+  } */
 }

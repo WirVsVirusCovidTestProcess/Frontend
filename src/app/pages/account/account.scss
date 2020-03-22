@@ -1,4 +1,20 @@
-img {
-  max-width: 140px;
-  border-radius: 50%;
+ion-avatar {
+  width: 250px;
+  height: auto;
+  max-width: 100%;
+}
+
+.left-side, .center, .right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.right-side {
+  align-items: stretch;
+}
+
+.qr-code {
+  max-width: 100%;
+  width: 100%;
 }

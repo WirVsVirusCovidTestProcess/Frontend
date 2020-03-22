@@ -1,5 +1,9 @@
 
 export interface UserOptions {
-  username: string;
-  password: string;
+  Code: string;
+  Name: string;
+  Street: string;
+  Area: string;
+  Email: string;
+  Phone: string;
 }

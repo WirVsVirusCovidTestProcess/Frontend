@@ -1,0 +1,27 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
+
+@Component({
+  selector: 'app-risky-contact',
+  templateUrl: './risky-contact.component.html',
+  styleUrls: ['./risky-contact.component.scss'],
+})
+export class RiskyContactComponent implements OnInit {
+  riskycontact: 0;
+
+  constructor(private router: Router,
+              private surveyService: QuestionnaireDataService) { }
+
+  ngOnInit() {}
+
+  submit() {
+    this.surveyService.setAnswer('risky-contact', this.riskycontact);
+
+    if(this.riskycontact == 0){
+      this.router.navigateByUrl('/questions/transfer-contact-since', { replaceUrl: true });
+    } else {
+      this.router.navigateByUrl('/questions/suspect-contact', { replaceUrl: true });
+    }
+  }
+}
