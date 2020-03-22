@@ -1,42 +1,53 @@
 <ion-content>
-  <ion-card>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="4">
-        <h3>Weitere Informationen</h3>
+  <ion-row>
+    <ion-col size-lg="10" offset-md="1">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <h1>Weitere Informationen</h1>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <form #signupForm="ngForm" novalidate>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
 
-        <form #signupForm="ngForm" novalidate>
-          <ion-list lines="none">
-            <ion-item>
-              <ion-input [(ngModel)]="signup.Name" name="Name" type="text" #Name="ngModel" placeholder="Vor- und Nachname" required>
-              </ion-input>
-            </ion-item>
 
-            <ion-item>
-              <ion-input [(ngModel)]="signup.Street" name="Street" type="text" #Street="ngModel" placeholder="Strasse / Hausnummer" required>
-              </ion-input>
-            </ion-item>
 
-            <ion-item>
-              <ion-input [(ngModel)]="signup.Area" name="Area" type="text" #Area="ngModel" placeholder="PLZ / Ort" required>
-              </ion-input>
-            </ion-item>
+                  <ion-list lines="none">
+                    <ion-item>
+                      <ion-input [(ngModel)]="signup.Name" name="Name" type="text" #Name="ngModel"
+                                 placeholder="Vor- und Nachname" required>
+                      </ion-input>
+                    </ion-item>
 
-            <ion-item>
-              <ion-input [(ngModel)]="signup.Email" name="Email" type="text" #Email="ngModel" placeholder="E-Mail" compose email required>
-              </ion-input>
-            </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="signup.Street" name="Street" type="text" #Street="ngModel"
+                                 placeholder="Strasse / Hausnummer" required>
+                      </ion-input>
+                    </ion-item>
 
-            <ion-item>
-              <ion-input [(ngModel)]="signup.Phone" name="Phone" type="text" #Phone="ngModel" placeholder="Telefon" required>
-              </ion-input>
-            </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="signup.Area" name="Area" type="text" #Area="ngModel"
+                                 placeholder="PLZ / Ort"
+                                 required>
+                      </ion-input>
+                    </ion-item>
 
-          </ion-list>
+                    <ion-item>
+                      <ion-input [(ngModel)]="signup.Email" name="Email" type="text" #Email="ngModel"
+                                 placeholder="E-Mail"
+                                 compose email required>
+                      </ion-input>
+                    </ion-item>
 
-          <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Anmelden</ion-button>
-        </form>
-      </ion-col>
+                    <ion-item>
+                      <ion-input [(ngModel)]="signup.Phone" name="Phone" type="text" #Phone="ngModel"
+                                 placeholder="Telefon"
+                                 required>
+                      </ion-input>
+                    </ion-item>
 
       <ion-col size="4">
     
