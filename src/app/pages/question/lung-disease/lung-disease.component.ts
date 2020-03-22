@@ -17,6 +17,8 @@ export class LungDiseaseComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('lung-disease', this.lungdisease);
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/symptom-diabetes', { replaceUrl: true });
+    }, 400);
   }
 }

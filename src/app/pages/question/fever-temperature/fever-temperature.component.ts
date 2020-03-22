@@ -17,6 +17,8 @@ export class FeverTemperatureComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('fever-temperature', this.fevertemperature);
-    this.router.navigateByUrl('/questions/symptoms-chills', { replaceUrl: true });
+    setTimeout(() => {
+      this.router.navigateByUrl('/questions/symptoms-chills', { replaceUrl: true });
+    }, 400);
   }
 }

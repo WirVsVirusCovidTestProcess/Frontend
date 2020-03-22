@@ -17,10 +17,12 @@ export class FeverDurationComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('fever-duration', this.feverduration);
-    if(this.feverduration == 0){
-      this.router.navigateByUrl('/questions/symptom-fever-temperature', { replaceUrl: true });
-    } else {
-      this.router.navigateByUrl('/questions/symptoms-chills', { replaceUrl: true });
-    }
+    setTimeout(() => {
+      if(this.feverduration == 0){
+        this.router.navigateByUrl('/questions/symptom-fever-temperature', { replaceUrl: true });
+      } else {
+        this.router.navigateByUrl('/questions/symptoms-chills', { replaceUrl: true });
+      }
+    }, 400);
   }
 }

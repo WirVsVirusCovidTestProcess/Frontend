@@ -17,6 +17,9 @@ export class BodyAcheComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('body-ache', this.bodyache);
-    this.router.navigateByUrl('/questions/symptoms-cough', { replaceUrl: true });
+
+    setTimeout(() => {
+      this.router.navigateByUrl('/questions/symptoms-cough', { replaceUrl: true });
+    }, 400);
   }
 }

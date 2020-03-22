@@ -17,6 +17,8 @@ export class FluShotComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('flu-shot', this.flushot);
-    this.router.navigateByUrl('/about/what-now', { replaceUrl: true });
+    setTimeout(() => {
+      this.router.navigateByUrl('/about/what-now', { replaceUrl: true });
+    }, 400);
   }
 }

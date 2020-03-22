@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {QuestionnaireDataService} from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-work',
@@ -11,12 +11,16 @@ export class WorkComponent implements OnInit {
   work: 0;
 
   constructor(private router: Router,
-              private surveyService: QuestionnaireDataService) { }
+              private surveyService: QuestionnaireDataService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   submit() {
-  this.surveyService.setAnswer('work', this.work);
-  this.router.navigateByUrl('/questions/factors-smoking', { replaceUrl: true });
+    this.surveyService.setAnswer('work', this.work);
+    setTimeout(() => {
+      this.router.navigateByUrl('/questions/factors-smoking', {replaceUrl: true});
+    }, 400);
   }
 }

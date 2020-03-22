@@ -17,6 +17,8 @@ export class SniffComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('sniff', this.sniff);
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/symptom-diarrhea', { replaceUrl: true });
+    }, 400);
   }
 }

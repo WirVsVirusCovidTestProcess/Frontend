@@ -17,6 +17,8 @@ export class AgeComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('age', this.age);
-    this.router.navigateByUrl('/questions/factors-situation', { replaceUrl: true });
+    setTimeout(() => {
+      this.router.navigateByUrl('/questions/factors-situation', { replaceUrl: true });
+    }, 400);
   }
 }

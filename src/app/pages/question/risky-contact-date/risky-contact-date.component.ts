@@ -23,6 +23,8 @@ export class RiskyContactDateComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('risky-contact-date', formatDate(this.riskycontactdate));
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/symptom-fever', { replaceUrl: true });
+    }, 400);
   }
 }

@@ -17,6 +17,8 @@ export class SoreThroatComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('sore-throat', this.sorethroat);
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/symptom-head', { replaceUrl: true });
+    }, 400);
   }
 }

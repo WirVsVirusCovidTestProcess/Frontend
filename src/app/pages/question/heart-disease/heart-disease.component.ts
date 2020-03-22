@@ -17,6 +17,8 @@ export class HeartDiseaseComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('heart-disease', this.heartdisease);
-    this.router.navigateByUrl('/questions/factor-obesity', { replaceUrl: true });
+    setTimeout(() => {
+      this.router.navigateByUrl('/questions/factor-obesity', { replaceUrl: true });
+    }, 400);
   }
 }

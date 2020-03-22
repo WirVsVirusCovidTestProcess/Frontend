@@ -17,10 +17,12 @@ export class FeverComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('fever', this.fever);
-    if(this.fever == 0){
-      this.router.navigateByUrl('/questions/symptom-fever-temperature', { replaceUrl: true });
-    } else {
-      this.router.navigateByUrl('/questions/symptom-fever-duration', { replaceUrl: true });
-    }
+    setTimeout(() => {
+      if(this.fever == 0){
+        this.router.navigateByUrl('/questions/symptom-fever-temperature', { replaceUrl: true });
+      } else {
+        this.router.navigateByUrl('/questions/symptom-fever-duration', { replaceUrl: true });
+      }
+    }, 400);
   }
 }

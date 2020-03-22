@@ -18,10 +18,12 @@ export class RiskyContactComponent implements OnInit {
   submit() {
     this.surveyService.setAnswer('risky-contact', this.riskycontact);
 
+    setTimeout(() => {
     if(this.riskycontact == 0){
       this.router.navigateByUrl('/questions/transfer-contact-since', { replaceUrl: true });
     } else {
       this.router.navigateByUrl('/questions/suspect-contact', { replaceUrl: true });
     }
+    }, 400);
   }
 }

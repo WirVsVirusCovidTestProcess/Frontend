@@ -22,6 +22,8 @@ export class SuspectContactDateComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('suspect-contact-date', formatDate(this.suspectcontact));
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/symptom-fever', { replaceUrl: true });
+    }, 400);
   }
 }

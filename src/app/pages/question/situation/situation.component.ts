@@ -17,6 +17,8 @@ export class SituationComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('situation', this.situation);
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/factor-work', { replaceUrl: true });
+    }, 400);
   }
 }

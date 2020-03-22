@@ -22,8 +22,8 @@ export class NrwTravelReturnComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('nrw-travel-return', formatDate(this.nrwtravelreturn));
-
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/travel-crossborder', { replaceUrl: true });
-
+    }, 400);
   }
 }

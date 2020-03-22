@@ -17,6 +17,8 @@ export class ImmunSuppressivaComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('immun-suppressiva', this.immunsuppressiva);
+    setTimeout(() => {
     this.router.navigateByUrl('/questions/factor-flushot', { replaceUrl: true });
+    }, 400);
   }
 }

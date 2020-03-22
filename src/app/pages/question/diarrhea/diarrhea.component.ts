@@ -17,6 +17,8 @@ export class DiarrheaComponent implements OnInit {
 
   submit() {
     this.surveyService.setAnswer('diarrhea', this.diarrhea);
-    this.router.navigateByUrl('/questions/symptom-throat', { replaceUrl: true });
+    setTimeout(() => {
+      this.router.navigateByUrl('/questions/symptom-throat', { replaceUrl: true });
+    }, 400);
   }
 }
