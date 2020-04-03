@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://covid-testprozess.azurewebsites.net'
+  apiUrl: 'http://covid-testprocess.azurewebsites.net'
 };

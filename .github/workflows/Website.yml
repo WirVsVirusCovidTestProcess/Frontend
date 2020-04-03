@@ -7,7 +7,7 @@ name: Install Dependencies, Lint, Build and Test
 on: [push]
 
 env:
-  AZURE_WEBAPP_NAME: covid-testprozess    # set this to your application's name
+  AZURE_WEBAPP_NAME: covid-testprocess    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: 'bin/'                # set this to the node version to use
   ARTIFACT_NAME: 'web'
 
