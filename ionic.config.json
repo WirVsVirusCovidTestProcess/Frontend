@@ -6,8 +6,8 @@
   },
   "proxies": [
     {
-      "path": "https://covid-testprocess.azurewebsites.net/api",
-      "proxyUrl": "https://covid-testprocess.azurewebsites.net/api"
+      "path": "https://covid-functionapp.azurewebsites.net/api",
+      "proxyUrl": "https://covid-functionapp.azurewebsites.net/api"
     }
   ]
 }

@@ -11,7 +11,7 @@ export class UserdataService {
 
   public saveUser(user: UserOptions): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post('https://covid-testprocess.azurewebsites.net/api/AddUserInformation?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==',
+      this.http.post('https://covid-functionapp.azurewebsites.net/api/AddUserInformation?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==',
       {
         "FirstName": user.Name,
         "LastName": user.Name,

@@ -135,7 +135,7 @@ export class QuestionnaireDataService {
 
   public sendAnswers(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post('https://covid-testprocess.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
+      this.http.post('https://covid-functionapp.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
         Answers: this.toJSON()
       }, { responseType: 'text' })
       .subscribe(response => {
@@ -147,7 +147,7 @@ export class QuestionnaireDataService {
 
   public loadRiskScore(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post('https://covid-testprocess.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
+      this.http.post('https://covid-functionapp.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
         Token: this.id
       }).subscribe((data: any) => {
         if (!data.riskScore) {
