@@ -8,6 +8,7 @@ import {QuestionnaireDataService} from '../../../services/questionnaireData.serv
   styleUrls: ['./what-now.component.scss'],
 })
 export class WhatNowComponent implements OnInit {
+  maxCountPolls = 5;
 
   constructor(private router: Router, private dataService: QuestionnaireDataService) { }
 
@@ -22,6 +23,9 @@ export class WhatNowComponent implements OnInit {
   sendAnswers() {
     this.dataService.sendAnswers().then(() => {
       this.startPollingRiskScore();
+    }).catch(() => {
+      // Mock
+      this.startPollingRiskScore();
     });
   }
 
@@ -30,6 +34,13 @@ export class WhatNowComponent implements OnInit {
       this.decide();
     })
     .catch(() => {
+      if (this.maxCountPolls <= 0) {
+        // Mock result
+        this.dataService.setMockRiskScore();
+        this.decide();
+        return;
+      }
+      this.maxCountPolls--;
       setTimeout(this.startPollingRiskScore.bind(this), 1000);
     });
   }

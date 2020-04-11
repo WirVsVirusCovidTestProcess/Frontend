@@ -4,18 +4,18 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>
-            <h1>Sie scheinen zur Riskogruppe zu gehören</h1>
+            <h1>{{ "about.risk_group.title" | translate }}</h1>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <p>
-            Wenn Sie möchten, melden Sie sich bei der Hotline der Senatsgesundheitsverwaltung (Tel. 030/9028 28 28) oder stellen Sie sich in einer der Untersuchungsstellen vor.
-
-            Wenn Sie das Haus verlassen, halten Sie ausreichend Abstand (mehr als 2 Meter) zu anderen Personen, fassen Sie möglichst nichts an und achten Sie auf die Regeln für richtiges Husten und Niesen.
-            Bitte vermeiden Sie unnötige Kontakte zu anderen Personen und bleiben Sie nach Möglichkeit zu Hause.
+            {{ "about.risk_group.text_1" | translate }}
+          </p>
+          <p>
+            {{ "about.risk_group.text_2" | translate }}
           </p>
 
-          <ion-button (click)="submit()">Zum Test-Termin</ion-button>
+          <ion-button (click)="submit()">{{ "about.risk_group.appointment" | translate }}</ion-button>
         </ion-card-content>
       </ion-card>
     </ion-col>

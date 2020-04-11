@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { MenuController, Platform } from '@ionic/angular';
 
@@ -47,7 +48,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translateService: TranslateService
   ) {
     this.initializeApp();
   }
@@ -70,6 +72,8 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.translateService.setDefaultLang('en');
+      this.translateService.use('de');
     });
   }
 

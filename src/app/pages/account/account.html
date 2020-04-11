@@ -53,9 +53,9 @@
                 <ion-card [ngSwitch]="result" size="large" expand="block" class="result" [color]="getstatus(result)">
                   <ion-card-header>
                     <ion-card-title>
-                      <span *ngSwitchCase="null">Noch kein Ergebnis</span>
-                      <span *ngSwitchCase="true">Positiv getestet</span>
-                      <span *ngSwitchCase="false">Negativ getestet</span>
+                      <span *ngSwitchCase="null">{{ "account.result.not_yet" | translate }}</span>
+                      <span *ngSwitchCase="true">{{ "account.result.positive" | translate }}</span>
+                      <span *ngSwitchCase="false">{{ "account.result.negative" | translate }}</span>
                     </ion-card-title>
                   </ion-card-header>
                 </ion-card>
@@ -63,28 +63,28 @@
 
                 <qrcode *ngIf="questionnaireDataXML" [qrdata]="questionnaireDataXML" [width]="256"
                         [errorCorrectionLevel]="'M'" class="qr-code"></qrcode>
-                
+
 
                 <div *ngIf="appointment == null; then thenBlock else elseBlock"></div>
                 <ng-template #thenBlock>
-                  
+
                   <ion-card>
                     <ion-card-header>
                       <ion-card-title>
-                        Warte auf Termin
+                        {{ "account.appointment.waiting" | translate }}
                       </ion-card-title>
                     </ion-card-header>
                     <ion-card-content style="margin: auto;">
                       <ion-spinner name="crescent"></ion-spinner>
                     </ion-card-content>
                   </ion-card>
-                  
+
                 </ng-template>
                 <ng-template #elseBlock>
                   <ion-card color="primary">
                     <ion-card-header>
                       <ion-card-title>
-                        Termin
+                        {{ "account.appointment.title" | translate }}
                       </ion-card-title>
                     </ion-card-header>
                     <ion-card-content>
@@ -94,13 +94,13 @@
                     </ion-card-content>
                   </ion-card>
                 </ng-template>
-                
+
 
               </ion-col>
               <ion-col size-lg="3" size="12" class="right-side">
                 <ion-list>
                   <ion-list-header>
-                    Patientennummer
+                    {{ "account.patient_number" | translate }}
                   </ion-list-header>
 
                   <ion-item>
@@ -111,7 +111,7 @@
                 </ion-list>
                 <ion-list>
                   <ion-list-header>
-                    Kontaktpersonen
+                    {{ "account.contact_persons" | translate }}
                   </ion-list-header>
 
                   <ion-item *ngFor="let contact of contacts">
@@ -120,7 +120,7 @@
                     </ion-label>
                   </ion-item>
                 </ion-list>
-                <ion-button *ngIf="contacts.length < 5 " (click)="addContact()">Kontakt hinzufügen</ion-button>
+                <ion-button *ngIf="contacts.length < 5 " (click)="addContact()">{{ "account.add_contact_person" | translate }}</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>

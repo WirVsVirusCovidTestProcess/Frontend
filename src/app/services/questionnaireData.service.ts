@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { QuestionnaireAnswer } from '../types/questionnaireAnswer';
-import { Storage } from '@ionic/storage';
+import {Injectable} from '@angular/core';
+import {QuestionnaireAnswer} from '../types/questionnaireAnswer';
+import {Storage} from '@ionic/storage';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
 // Define mapping between questionnaire keys and xml keys
 const answerKeyXMLMap: Map<string, string> = new Map<string, string>([
@@ -137,10 +137,13 @@ export class QuestionnaireDataService {
     return new Promise((resolve, reject) => {
       this.http.post('https://covid-functionapp.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
         Answers: this.toJSON()
-      }, { responseType: 'text' })
-      .subscribe(response => {
+      }, {responseType: 'text'})
+        .subscribe(response => {
           this.setId(response);
           resolve(response);
+        }, error => {
+          console.error(error);
+          reject(error);
         });
     });
   }
@@ -157,8 +160,17 @@ export class QuestionnaireDataService {
           this.saveToStorage();
           resolve(data.riskScore);
         }
+      }, (error) => {
+        console.error(error);
+        this.setMockRiskScore();
+        reject(error);
       });
     });
+  }
+
+  public setMockRiskScore(): void {
+    this.riskScore = 30;
+    this.saveToStorage();
   }
 
   public getId(): string {
@@ -175,7 +187,7 @@ export class QuestionnaireDataService {
       if (!code || code.length === 0 || !answer.value) {
         return undefined;
       }
-      return { [code]: answer.value };
+      return {[code]: answer.value};
     }).filter(a => !!a);
   }
 

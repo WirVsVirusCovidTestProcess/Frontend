@@ -9,13 +9,15 @@ import { InformationComponent } from './information/information.component';
 import { GreenlightComponent } from './greenlight/greenlight.component';
 import { RiskgroupComponent } from './riskgroup/riskgroup.component';
 import { WhatNowComponent } from './what-now/what-now.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AboutPageRoutingModule
+    AboutPageRoutingModule,
+    TranslateModule
   ],
   declarations: [
     AboutPage,

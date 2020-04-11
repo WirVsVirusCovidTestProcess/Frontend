@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {QuestionnaireDataService} from '../../../services/questionnaireData.service';
 import {Storage} from '@ionic/storage';
 
 @Component({

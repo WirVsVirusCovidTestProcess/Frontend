@@ -4,7 +4,7 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>
-            <h1>Weitere Informationen</h1>
+            <h1>{{ "signup.title" | translate }}</h1>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -18,33 +18,33 @@
                   <ion-list lines="none">
                     <ion-item>
                       <ion-input [(ngModel)]="signup.Name" name="Name" type="text" #Name="ngModel"
-                                 placeholder="Vor- und Nachname" required>
+                                 [placeholder]="'signup.name' | translate" required>
                       </ion-input>
                     </ion-item>
 
                     <ion-item>
                       <ion-input [(ngModel)]="signup.Street" name="Street" type="text" #Street="ngModel"
-                                 placeholder="Strasse / Hausnummer" required>
+                                 [placeholder]="'signup.street' | translate" required>
                       </ion-input>
                     </ion-item>
 
                     <ion-item>
                       <ion-input [(ngModel)]="signup.Area" name="Area" type="text" #Area="ngModel"
-                                 placeholder="PLZ / Ort"
+                                 [placeholder]="'signup.area' | translate"
                                  required>
                       </ion-input>
                     </ion-item>
 
                     <ion-item>
                       <ion-input [(ngModel)]="signup.Email" name="Email" type="text" #Email="ngModel"
-                                 placeholder="E-Mail"
+                                 [placeholder]="'signup.email' | translate"
                                  compose email required>
                       </ion-input>
                     </ion-item>
 
                     <ion-item>
                       <ion-input [(ngModel)]="signup.Phone" name="Phone" type="text" #Phone="ngModel"
-                                 placeholder="Telefon"
+                                 [placeholder]="'signup.phone' | translate"
                                  required>
                       </ion-input>
                     </ion-item>
@@ -56,19 +56,19 @@
 
                 <ion-list lines="none">
                   <ion-item *ngFor="let contact of contacts;let i=index">
-                    <ion-input [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" type="text" placeholder="Kontaktperson">
+                    <ion-input [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" type="text" [placeholder]="'signup.contact_person' | translate">
                     </ion-input>
                   </ion-item>
                 </ion-list>
 
-                <ion-button *ngIf="contacts.length < 5 " (click)="addContact()">Hinzufügen</ion-button>
+                <ion-button *ngIf="contacts.length < 5 " (click)="addContact()">{{ "signup.add_contact_person" | translate }}</ion-button>
               </ion-col>
 
             </ion-row>
           </ion-grid>
 
           <div class="ion-padding">
-            <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Anmelden</ion-button>
+            <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">{{ "signup.submit" | translate }}</ion-button>
           </div>
           </form>
         </ion-card-content>

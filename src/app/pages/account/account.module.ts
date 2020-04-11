@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { AccountPage } from './account';
 import { AccountPageRoutingModule } from './account-routing.module';
 import { SharedModule } from '../../app.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
     AccountPageRoutingModule,
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    TranslateModule
   ],
   declarations: [
     AccountPage

@@ -5,19 +5,17 @@
         <ion-item>
           <ion-label>
             <h1>
-              Information
+              {{ "about.information.title" | translate }}
             </h1>
-            <p>Die Nutzung dieser App ersetzt keine ärztliche Behandlung und erbringt 
-                keine diagnostische Leistung. Die CovApp dient der Verbesserung der Handlungsabläufe 
-              in der Untersuchungsstelle der Charité und anderen Ambulanzen im Zusammenhang mit dem neuartigen 
-              Coronavirus SARS-CoV-2. Wenn Sie sich aktuell schwer krank fühlen, suchen Sie bitte umgehend einen 
-              Arzt/Ärztin oder medizinische Hilfe auf. </p>
+            <p>
+              {{ "about.information.text" | translate }}
+            </p>
           </ion-label>
         </ion-item>
       </ion-list>
 
       <ion-button (click)="start()" size="large">
-        Fragebogen starten
+        {{ "about.page.start" | translate }}
       </ion-button>
     </ion-card-content>
   </ion-card>

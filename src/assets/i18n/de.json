@@ -1,0 +1,80 @@
+{
+  "about": {
+    "page": {
+      "1": {
+        "title": "Starten Sie die Befragung durch Klicken auf „Fragebogen starten“ ",
+        "text": "Der Fragebogen nimmt ca. 5 Minuten Ihrer Zeit in Anspruch und stellt Ihnen Fragen zu aktuellen Symptomen, Vorerkrankungen, Reisen in Risikogebiete und Kontakt zu Verdachtsfällen. Versuchen Sie, die Fragen so genau wie möglich zu beantworten."
+      },
+      "2": {
+        "title": "Fragenkatalog und Empfehlungen",
+        "text": "Zum Abschluss der Befragung erhalten Sie eine Übersicht über Ihre Antworten und spezifische Handlungsempfehlungen wie z.B",
+        "item_1": "Anruf bei einer der Hotlines des öffentlichen Gesundheitsdienstes",
+        "item_2": "Vorstellung beim Hausarzt",
+        "item_3": "Häusliche Isolierung"
+      },
+      "3": {
+        "title": "Vorbereitung eines Arztgesprächs",
+        "text": "Falls ein Arztgespräch notwendig sein sollte, bieten einige Untersuchungsstellen die Möglichkeit, Ihre Antworten über einen QR-Code einzuscannen (u.a. an der Charité). Der Einsatz eines QR-Codes zur Übermittlung relevanter medizinischer Informationen unterstützt die weiterführende Versorgung und hilft, die hohe Anzahl an Hilfe- bzw. Ratsuchenden schneller zu bearbeiten. Für einen Besuch bei Ihrem Hausarzt oder in einer anderen Untersuchungsstelle außerhalb der Charité drucken Sie die Zusammenfassung am Ende aus oder zeigen Sie diese bei Ihrem Arztbesuch vor."
+      },
+      "4": {
+        "title": "Welche Daten werden über das Internet übertragen?",
+        "text": "Der Fragebogen ist anonym und wird nur auf Ihrem Endgerät (zum Beispiel Mobiltelefon) bearbeitet und gespeichert. Ihre Antworten werden nicht an uns oder über das Internet an Dritte übertragen."
+      },
+      "5": {
+        "title": "Im Zweifel zum Arzt!",
+        "text": "Die Nutzung dieser App ersetzt keine ärztliche Behandlung. Wenn Sie sich aktuell schwer krank fühlen, suchen Sie bitte umgehend medizinische Hilfe auf."
+      },
+      "start": "Fragebogen Starten"
+    },
+    "information": {
+      "title": "Information",
+      "text": "Die Nutzung dieser App ersetzt keine ärztliche Behandlung und erbringt keine diagnostische Leistung. Die CovApp dient der Verbesserung der Handlungsabläufe in der Untersuchungsstelle der Charité und anderen Ambulanzen im Zusammenhang mit dem neuartigen Coronavirus SARS-CoV-2. Wenn Sie sich aktuell schwer krank fühlen, suchen Sie bitte umgehend einen Arzt/Ärztin oder medizinische Hilfe auf.",
+      "start": "Fragebogen Starten"
+    },
+    "what_now": {
+      "title": "Ergebnisse werden berechnet"
+    },
+    "risk_group": {
+      "title": "Sie scheinen zur Riskogruppe zu gehören",
+      "text_1": "Wenn Sie möchten, melden Sie sich bei der Hotline der Senatsgesundheitsverwaltung (Tel. 030/9028 28 28) oder stellen Sie sich in einer der Untersuchungsstellen vor.",
+      "text_2": "Wenn Sie das Haus verlassen, halten Sie ausreichend Abstand (mehr als 2 Meter) zu anderen Personen, fassen Sie möglichst nichts an und achten Sie auf die Regeln für richtiges Husten und Niesen. Bitte vermeiden Sie unnötige Kontakte zu anderen Personen und bleiben Sie nach Möglichkeit zu Hause.",
+      "appointment": "Zum Test-Termin"
+    },
+    "greenlight": {
+      "title": "Bleiben Sie Zuhause",
+      "text_1": "Es besteht derzeit kein Handlungsbedarf für Sie, da Sie:",
+      "item_1": "Keinen Kontakt zu einem bestätigten Fall hatten",
+      "item_2": "In den letzten 14 Tagen in keinem Risikogebiet laut RKI waren",
+      "item_3": "Keine Symptome haben",
+      "text_2_prefix": "Achten Sie vermehrt auf ",
+      "text_2_link": "gute Händehygiene",
+      "text_2_suffix": ".",
+      "text_3": "Wenn Sie das Haus verlassen, halten Sie ausreichend Abstand (mehr als 2 Meter) zu anderen Personen, fassen Sie möglichst nichts an, und achten Sie auf die Regeln für richtiges Husten und Niesen."
+    }
+  },
+  "signup": {
+    "title": "Weitere Informationen",
+    "name": "Vor- und Nachname",
+    "street": "Strasse / Hausnummer",
+    "area": "PLZ / Ort",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "contact_person": "Kontaktperson",
+    "add_contact_person": "Kontaktperson hinzufügen",
+    "submit": "Anmelden"
+  },
+  "account": {
+    "result": {
+      "not_yet": "Noch kein Ergebnis",
+      "positive": "Positiv getestet",
+      "negative": "Negativ getestet"
+    },
+    "appointment": {
+      "waiting": "Warte auf Termin",
+      "title": "Termin"
+    },
+    "patient_number": "Patientennummer",
+    "contact_persons": "Kontaktpersonen",
+    "add_contact_person": "Kontaktperson hinzufügen"
+  }
+}
