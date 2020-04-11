@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
-import { MenuController, Platform } from '@ionic/angular';
+import {MenuController, Platform} from '@ionic/angular';
 
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
 
-import { Storage } from '@ionic/storage';
+import {Storage} from '@ionic/storage';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -49,23 +50,27 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private storage: Storage,
     private route: ActivatedRoute,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private location: Location
   ) {
     this.initializeApp();
   }
 
- async ngOnInit() {
-  this.storage.get('user').then(res => {
-    if (res) {
-      this.router.navigateByUrl('/account', { replaceUrl: true });
+  ngOnInit() {
+    if (['/qr-code', '/account'].includes(this.location.path())) {
+      return;
     }
-  });
+    this.storage.get('user').then(res => {
+      if (res) {
+        this.router.navigateByUrl('/account', {replaceUrl: true});
+      }
+    });
 
-  this.storage.get('id').then(res => {
-    if (res) {
-      this.router.navigateByUrl('/about/what-now', { replaceUrl: true });
-    }
-  });
+    this.storage.get('id').then(res => {
+      if (res) {
+        this.router.navigateByUrl('/about/what-now', {replaceUrl: true});
+      }
+    });
   }
 
   initializeApp() {
@@ -75,10 +80,5 @@ export class AppComponent implements OnInit {
       this.translateService.setDefaultLang('en');
       this.translateService.use('de');
     });
-  }
-
-  openQrCodeView() {
-    this.menu.enable(false);
-    this.router.navigateByUrl('/qr-code');
   }
 }

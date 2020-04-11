@@ -1,20 +1,19 @@
 <ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button color='primary' (click)="closeView()">Schließen</ion-button>
+      <ion-button color='primary' (click)="closeView()">{{ "qr_code.close" | translate }}</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true" class="centered">
   <h2 class="slide-title">
-    QR Code scannen
+    {{ "qr_code.title" | translate }}
   </h2>
-  <qrcode-view [data]="questionnaireDataXML"></qrcode-view>
+  <qrcode [qrdata]="questionnaireDataXML" *ngIf="questionnaireDataXML" [width]="450" [errorCorrectionLevel]="'M'"></qrcode>
   <p>
-    Der QR Code enthält viele tolle Informationen, die hier nochmal dargestellt sind, damit man nicht scannen muss:
+    {{ "qr_code.contents" | translate }}
     <br>
     {{ questionnaireDataXML }}
   </p>
-  <ion-button color='primary' (click)="sendData()">Senden</ion-button>
 </ion-content>

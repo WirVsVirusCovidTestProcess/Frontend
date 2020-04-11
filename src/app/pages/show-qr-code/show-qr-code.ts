@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { MenuController } from '@ionic/angular';
 import {QuestionnaireDataService} from '../../services/questionnaireData.service';
@@ -14,13 +14,12 @@ export class ShowQrCodePage {
 
   constructor(
     public menu: MenuController,
-    public router: Router,
+    public location: Location,
     private questionnaireDataService: QuestionnaireDataService,
   ) {}
 
   closeView() {
-    this.router
-      .navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
+    this.location.back();
   }
 
   ionViewWillEnter() {
@@ -35,9 +34,5 @@ export class ShowQrCodePage {
 
   getQuestionnaireData() {
     this.questionnaireDataXML = this.questionnaireDataService.toXML();
-  }
-
-  sendData() {
-    this.questionnaireDataService.sendAnswers();
   }
 }

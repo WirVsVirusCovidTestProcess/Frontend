@@ -27,23 +27,23 @@ export class AccountPage implements AfterViewInit, AfterContentInit {
 
 
   ngAfterContentInit(): void {
-    this.delay(3000).then(any=>{
+    this.delay(3000).then(() => {
       this.appointment = {
         time: '24.03.2020 17:30 Uhr',
         street: 'Marienhospital Stuttgart',
         area: '70189 Stuttgart'
-      }
+      };
     }).then(next =>
-      this.delay(5000).then(any => {
+      this.delay(5000).then(() => {
         this.result = true;
       })
     );
   }
 
   getstatus(result) {
-    if(result == null) {
+    if (result == null) {
       return 'light';
-    } else if(result) {
+    } else if (result) {
       return 'danger';
     } else {
       return 'success';
@@ -73,7 +73,7 @@ export class AccountPage implements AfterViewInit, AfterContentInit {
   }
 
   async delay(ms: number) {
-    await new Promise(resolve => setTimeout(()=>resolve(), ms));
+    await new Promise(resolve => setTimeout(() => resolve(), ms));
   }
 
   addContact() {
@@ -82,5 +82,9 @@ export class AccountPage implements AfterViewInit, AfterContentInit {
     if (this.contacts.length < 5) {
       this.contacts.push('');
     }
+  }
+
+  showQRCode() {
+    this.router.navigateByUrl('/qr-code');
   }
 }

@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { QRCodeModule, QRCodeComponent } from 'angularx-qrcode';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -28,7 +28,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: QRCodeModule,
-      providers: [  ]
+      providers: [  ],
     };
   }
 }

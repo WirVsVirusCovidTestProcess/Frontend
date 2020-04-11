@@ -76,5 +76,10 @@
     "patient_number": "Patientennummer",
     "contact_persons": "Kontaktpersonen",
     "add_contact_person": "Kontaktperson hinzufügen"
+  },
+  "qr_code": {
+    "title": "QR-Code Scannen",
+    "contents": "Die Inhalte des QR-Codes sind unten lesbar dargestellt",
+    "close": "schließen"
   }
 }
