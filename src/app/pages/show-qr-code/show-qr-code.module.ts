@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 import { ShowQrCodePage } from './show-qr-code';
-import { QrCodeViewComponent } from '../../components/qrcode-view/qrcode-view';
 import { SharedModule } from '../../app.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {ShowQrCodePageRoutingModule} from './show-qr-code-routing.module';
@@ -18,8 +17,7 @@ import {ShowQrCodePageRoutingModule} from './show-qr-code-routing.module';
     ShowQrCodePageRoutingModule
   ],
   declarations: [
-    ShowQrCodePage,
-    QrCodeViewComponent
+    ShowQrCodePage
   ],
   entryComponents: [ShowQrCodePage],
 })

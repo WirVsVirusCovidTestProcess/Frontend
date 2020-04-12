@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserData } from '../../providers/user-data';
+import { UserData } from '../../services/user-data';
 
-import { UserOptions } from '../../interfaces/user-options';
+import { UserOptions } from '../../types/user-options';
 import { QuestionnaireDataService } from '../../services/questionnaireData.service';
 
 
@@ -26,7 +26,7 @@ export class SignupPage implements OnInit {
     private questionSvc: QuestionnaireDataService  ) { }
 
   ngOnInit(): void {
-    //this.signup.Code = this.questionSvc.getId();
+    // this.signup.Code = this.questionSvc.getId();
   }
 
   onSignup(form: NgForm) {

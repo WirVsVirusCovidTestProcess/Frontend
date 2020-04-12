@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FLOW_RELEVANT_IDS, MAX_STEP_NUMBER, Question, questions} from '../../types/questions';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionnaireDataService} from '../../services/questionnaireData.service';
+import {formatDate} from '../../util';
 
 @Component({
   selector: 'page-question',
@@ -66,10 +67,7 @@ export class QuestionPage implements OnInit {
   }
 
   getDateString(): string {
-    const date = new Date(this.selectedDate);
-    const month = date.getMonth() + 1;
-    return `${date.getFullYear()}.${('0' + month).slice(-2)}.${('0' + date.getDate()).slice(-2)}`;
-
+    return formatDate(this.selectedDate);
   }
 
   saveAnswer(): void {

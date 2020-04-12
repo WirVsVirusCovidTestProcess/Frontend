@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { UserOptions } from '../interfaces/user-options';
-import { UserdataService } from '../services/userdata.service';
+import { UserOptions } from '../types/user-options';
+import { UserdataService } from './userdata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,8 +42,7 @@ export class UserData {
 
   signup(user: UserOptions) {
     this.storage.set('user', user);
-    let response = this.userData.saveUser(user);
-
+    this.userData.saveUser(user);
     // TODO: Save Token
   }
 }

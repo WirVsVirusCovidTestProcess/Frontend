@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserData } from '../../providers/user-data';
+import { UserData } from '../../services/user-data';
 import { QuestionnaireDataService } from '../../services/questionnaireData.service';
-import { UserOptions } from '../../interfaces/user-options';
+import { UserOptions } from '../../types/user-options';
 
 
 @Component({
