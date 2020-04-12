@@ -16,7 +16,7 @@ export class InformationComponent implements OnInit {
   }
 
   start() {
-    this.router.navigateByUrl('/questions/factors-age', { replaceUrl: true });
+    this.router.navigateByUrl('/questions', { replaceUrl: true });
   }
 
 }
