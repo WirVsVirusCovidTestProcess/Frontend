@@ -1,9 +1,9 @@
 {
-  "name": "ionic-conference-app",
+  "name": "health-19-patient-app",
   "version": "0.0.0",
-  "description": "Ionic Conference App",
-  "author": "Ionic Team <hi@ionicframework.com>",
-  "license": "Apache-2.0",
+  "description": "Health 19 Patient App",
+  "author": "Health 19 Team <dev@bernhardwittmann.com>",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -15,9 +15,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/ionic-conference-app.git"
+    "url": "https://github.com/WirVsVirusCovidTestProcess/Frontend_User"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
