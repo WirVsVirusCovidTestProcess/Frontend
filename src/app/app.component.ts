@@ -17,29 +17,7 @@ import {Location} from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  // appPages = [
-  //   {
-  //     title: 'Schedule',
-  //     url: '/app/tabs/schedule',
-  //     icon: 'calendar'
-  //   },
-  //   {
-  //     title: 'Speakers',
-  //     url: '/app/tabs/speakers',
-  //     icon: 'people'
-  //   },
-  //   {
-  //     title: 'Map',
-  //     url: '/app/tabs/map',
-  //     icon: 'map'
-  //   },
-  //   {
-  //     title: 'About',
-  //     url: '/app/tabs/about',
-  //     icon: 'information-circle'
-  //   }
-  // ];
-  // loggedIn = false;
+  availableLanguages = ['de', 'en'];
   dark = false;
 
   constructor(
@@ -71,12 +49,20 @@ export class AppComponent implements OnInit {
     });
   }
 
+  isLanguageSelected(lang: string): boolean {
+    return this.translateService.currentLang === lang;
+  }
+
+  changeLanguage(lang: string): void {
+    this.translateService.use(lang);
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.translateService.setDefaultLang('en');
-      this.translateService.use('de');
+      this.translateService.use(this.availableLanguages[0]);
     });
   }
 }

@@ -1,3 +1,11 @@
 <ion-app [class.dark-theme]="dark">
   <ion-router-outlet></ion-router-outlet>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="language-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button *ngFor="let lang of this.availableLanguages" [disabled]="this.isLanguageSelected(lang)" (click)="this.changeLanguage(lang)">{{ lang | uppercase }}</ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-app>

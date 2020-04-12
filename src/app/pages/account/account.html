@@ -10,7 +10,7 @@
 
                 <img src="assets/img/logo.png" width="290px"/>
 
-                <ion-list lines="none">
+                <ion-list lines="none" *ngIf="user">
                   <ion-item detail="false">
                     <ion-icon slot="start" name="person-outline"></ion-icon>
                     <ion-label>
@@ -103,7 +103,7 @@
                     {{ "account.patient_number" | translate }}
                   </ion-list-header>
 
-                  <ion-item>
+                  <ion-item *ngIf="user">
                     <ion-label>
                       <p>{{user.Code}}</p>
                     </ion-label>
