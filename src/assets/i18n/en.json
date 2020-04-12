@@ -1,1 +1,157 @@
-{}
+{
+  "about": {
+    "page": {
+      "1": {
+        "title": "Start the survey by clicking on „Start Questionnaire“",
+        "text": "Answering the questionnaire approximately takes 5 minutes of your time and asks about acute symptoms, health conditions, travels in risky regions and contact to suspected cases. Please try to answer as accurately as possible."
+      },
+      "2": {
+        "title": "List of questions and recommendations",
+        "text": "At the end of the questionnaire you will get an overview over your answers and specific recommended actions, like",
+        "item_1": "Calling your local health service",
+        "item_2": "Introduction to your doctor",
+        "item_3": "Domestic isolation"
+      },
+      "3": {
+        "title": "Preparation for your doctor",
+        "text": "In case you would need to see a doctor, some testing facilities provide the possibility to scan your answers via a QR-code. The usage of the QR-code for transmitting relevant, medical information supports further care and helps to handle the high amount of patients more quickly. For a visit at your doctor or another testing laboratory you can print the summary of the questionnaire answers."
+      },
+      "4": {
+        "title": "What data is transmitted via the internet?",
+        "text": "The questionnaire is anonymous and is only edited and saved on your device (e.g., phone). Your answers will not be transmitted over the internet to us or others."
+      },
+      "5": {
+        "title": "See a doctor when in doubt!",
+        "text": "The usage of this app does not replace treatment by a medical professional. If you feel critically ill, please seek medical help immediately."
+      },
+      "start": "Start Questionnaire"
+    },
+    "information": {
+      "title": "Information",
+      "text": "The usage of this app does not replace treatment by a medical professional and does not provide a diagnostic. The app serves to improve the process in the examination centers relating to the new corona virus SARS-CoV-2. If you feel critically ill, please seek medical help or a doctor immediately.",
+      "start": "Start Questionnaire"
+    },
+    "what_now": {
+      "title": "Calculating Results"
+    },
+    "risk_group": {
+      "title": "You appear to belong to a high risk group",
+      "text_1": "If you want, report yourself to the hotline of the health administration (Phone 030/9028 28 28) or present yourself at a examination center.",
+      "text_2": "If you leave the house, please keep enough distance (more than 2 metres) to other people, do not touch anything, if possible, and pay attention to the rules for correct coughing and sneezing. Please avoid unnecessary contact with other persons and stay at home.",
+      "appointment": "Get a testing appointment"
+    },
+    "greenlight": {
+      "title": "Stay at home",
+      "text_1": "Currently there does not exist a need of action for you, because you:",
+      "item_1": "had no contact to a confirmed case",
+      "item_2": "were not in a risky region in the last 14 days",
+      "item_3": "have no symptoms",
+      "text_2_prefix": "Please mind the ",
+      "text_2_link": "good hand hygiene",
+      "text_2_suffix": ".",
+      "text_3": "If you leave the house, please keep enough distance (more than 2 metres) to other people, do not touch anything, if possible, and pay attention to the rules for correct coughing and sneezing."
+    }
+  },
+  "signup": {
+    "title": "More Information",
+    "name": "First and Last Name",
+    "street": "Street / Street number",
+    "area": "Area Code / City",
+    "email": "E-Mail",
+    "phone": "Phone",
+    "contact_person": "Contact Person",
+    "add_contact_person": "Add Contact Person",
+    "submit": "Signup"
+  },
+  "account": {
+    "result": {
+      "not_yet": "No Result yet",
+      "positive": "Tested Positive",
+      "negative": "Tested Negative"
+    },
+    "appointment": {
+      "waiting": "Waiting for appointment",
+      "title": "Appointment"
+    },
+    "patient_number": "Patient Number",
+    "contact_persons": "Contact Person",
+    "add_contact_person": "Add Contact Person"
+  },
+  "qr_code": {
+    "title": "Scan QR-Code",
+    "contents": "The contents of the QR-code are listed below",
+    "close": "close"
+  },
+  "questions": {
+    "continue": "continue",
+    "select_date": "Choose Date",
+    "texts": {
+      "age": "How old are you?",
+      "age_65": "Are you 65 years old or older?",
+      "living_situation": "What is your current living situation?",
+      "caring": "Do you personally care or support at least once a week one or more persons with age related troubles, chronic diseases or infirmity?",
+      "workspace": "Are you employed in one of the following categories?",
+      "smoking": "Do you smoke?",
+      "pregnancy": "Are you pregnant?",
+      "contact": "Did you have close contact with a confirmed case?",
+      "contact_date": "When was the last contact?",
+      "fever": "Did you have fever (above 38°C) in the last 24 hours?",
+      "fever_temperature": "What was the highest temperature approximately?",
+      "fever_last_days": "Did you have fever (above 38°C) in the last 4 days?",
+      "chills": "Did you have shiverings in the last 24 hours?",
+      "listless": "Did you feel groggily or listless in the last 24 hours?",
+      "body_ache": "Did you have body ache in the last 24 hours?",
+      "diarrhea": "Did you have diarrhea in the last 24 hours?",
+      "head_ache": "Did you have head ache in the last 24 hours?",
+      "loss_of_smell": "Did you experience a loss of smell and/or taste in the last 24 hours?",
+      "cough": "Did you have continuing cough in the last 24 hours?",
+      "sniff": "Did you have a sniff in the last 24 hours?",
+      "sore_throat": "Did you have a sore throat in the last 24 hours?",
+      "out_of_breath": "Were you faster out of breath than usual in the last 24 hours?",
+      "symptoms_date": "Regarding all questions to symptoms: Since when did you have the symptoms?",
+      "lung_disease": "Were you ever diagnosed with a chronic lung disease by a doctor?",
+      "diabetes": "Were you ever diagnosed with diabetes by a doctor?",
+      "heart_disease": "Were you ever diagnosed with a heart disease by a doctor?",
+      "adipositas": "Were you ever diagnosed with adipositas by a doctor?",
+      "cortison": "Do you currently take Cortison in the form of tablettes?",
+      "immune_suppressiva": "Do you currently take Immunesuppressiva?",
+      "flu_shot": "Have you been vaccinated against the flu in the period from October 2019 to today?"
+    },
+    "comments": {
+      "caring": "This does not suppose support and acts of care that you provide in the context of your employment.",
+      "contact": "Close contact with a confirmed contact means: <ul><li>Contact from face to face longer than 15 minutes</li><li>Direct, physicial contact (touch, shaking of hands, kisses)</li><li>Being closer to the infected person for more than 15 minutes (less than 1,5 metres distance)</li><li>Contact with exchange of bodily fluids/li><li>Sharing of an appartment</li></ul>If you had contact, but were equipped with adequate protection (mask, lab coat), please choose \"No\".",
+      "cough": "This question relates to cold symptoms and excludes chronic cough or seasonal or allergic cough. Should you have a chronic cough, please compare your current symptoms with your former symptoms.",
+      "sniff": "This question relates to cold symptoms and excludes chronic sniff seasonal or allergic sniff. Should you have a chronic sniff, please compare your current symptoms with your former symptoms.",
+      "out_of_breath": "Choose \"Yes\", if you: \n<ul><li>get out of breath quicker than usual when under small pressure, like taking a walk or climbing a few stairs or have difficulty breathing</li><li>Have the feeling of breathlessness or shortness of breath while sitting or lying</li><li>Get a feeling of breathlessness when standing up from a bed or a chair</li></ul>\n\nShould you have a chronic lung disease, compare your current symptoms with former symptoms.",
+      "immune_suppressiva": "You get or take immune suppressive after an organ transplantation, during therapy of an auto immune disease or in the context of chemotherapy."
+    },
+    "answers": {
+      "age_0": "Younger than 40",
+      "age_1": "40-50",
+      "age_2": "51-60",
+      "age_3": "61-70",
+      "age_4": "71-80",
+      "age_5": "Above 80",
+      "yes": "Yes",
+      "no": "No",
+      "unkown": "I don't know",
+      "living_situation_0": "Living alone",
+      "living_situation_1": "Together with family, in a shared flat, or in a form of assisted living",
+      "workspace_0": "In the medical sector (care, doctor's office or hospital)",
+      "workspace_1": "In community services (school, kindergarden, university, etc.)",
+      "workspace_2": "No, in none of the above",
+      "fever_temperature_0": "38°C",
+      "fever_temperature_1": "39°C",
+      "fever_temperature_2": "40°C",
+      "fever_temperature_3": "41°C",
+      "fever_temperature_4": "42°C",
+      "fever_temperature_5": "Above 42°C",
+      "fever_temperature_6": "I don't know"
+    }
+  },
+  "datepicker": {
+    "months": "January February March April May June July August September October November December",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}
