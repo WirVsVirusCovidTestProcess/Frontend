@@ -1,6 +1,10 @@
 name: Apple Build CI
 
-on: [push]
+# Only push on tags to disable this faulty runner on master branch
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
