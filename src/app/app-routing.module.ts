@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/show-qr-code/show-qr-code.module').then(m => m.ShowQrCodeModule)
   },
   {
+    path: 'results',
+    loadChildren: () => import('./results/results.module').then( m => m.ResultsPageModule)
+  },
+  {
     path: '',
     redirectTo: '/about',
     pathMatch: 'full'

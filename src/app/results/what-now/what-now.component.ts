@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {QuestionnaireDataService} from '../../../services/questionnaireData.service';
+import {QuestionnaireDataService} from '../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-what-now',
@@ -30,7 +30,7 @@ export class WhatNowComponent implements OnInit {
   }
 
   startPollingRiskScore() {
-    this.dataService.loadRiskScore().then((risk) => {
+    this.dataService.loadRiskScore().then(() => {
       this.decide();
     })
     .catch(() => {
@@ -56,10 +56,10 @@ export class WhatNowComponent implements OnInit {
   }
 
   redirectToRiskGroup() {
-    this.router.navigateByUrl('/about/better-check-up');
+    this.router.navigateByUrl('/results/better-check-up');
   }
 
   redirectToGreenlight() {
-    this.router.navigateByUrl('/about/good-to-stay-home');
+    this.router.navigateByUrl('/results/good-to-stay-home');
   }
 }

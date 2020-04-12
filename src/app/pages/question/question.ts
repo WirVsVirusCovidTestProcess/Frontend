@@ -87,7 +87,7 @@ export class QuestionPage implements OnInit {
       nextURL = '/questions/' + nextQuestions[this.selectedOptionIndex];
     } else {
       if (nextQuestions === FLOW_RELEVANT_IDS.END) {
-        nextURL = '/about/what-now';
+        nextURL = '/results';
       } else {
         nextURL = '/questions/' + nextQuestions;
       }
