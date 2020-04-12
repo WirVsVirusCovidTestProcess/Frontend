@@ -5,9 +5,6 @@ import { Router } from '@angular/router';
 import { UserData } from '../../services/user-data';
 
 import { UserOptions } from '../../types/user-options';
-import { QuestionnaireDataService } from '../../services/questionnaireData.service';
-
-
 
 @Component({
   selector: 'page-signup',
@@ -22,12 +19,9 @@ export class SignupPage implements OnInit {
 
   constructor(
     public router: Router,
-    public userData: UserData,
-    private questionSvc: QuestionnaireDataService  ) { }
+    public userData: UserData) { }
 
-  ngOnInit(): void {
-    // this.signup.Code = this.questionSvc.getId();
-  }
+  ngOnInit(): void {}
 
   onSignup(form: NgForm) {
     this.submitted = true;

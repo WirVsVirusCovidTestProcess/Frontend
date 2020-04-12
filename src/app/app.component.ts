@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
-import {MenuController, Platform} from '@ionic/angular';
+import {Platform} from '@ionic/angular';
 
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
@@ -43,13 +43,11 @@ export class AppComponent implements OnInit {
   dark = false;
 
   constructor(
-    private menu: MenuController,
     private platform: Platform,
     private router: Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
-    private route: ActivatedRoute,
     private translateService: TranslateService,
     private location: Location
   ) {

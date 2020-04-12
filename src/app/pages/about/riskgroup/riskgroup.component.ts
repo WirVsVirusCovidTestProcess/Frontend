@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { QuestionnaireDataService } from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-riskgroup',
@@ -9,8 +8,7 @@ import { QuestionnaireDataService } from '../../../services/questionnaireData.se
 })
 export class RiskgroupComponent implements OnInit {
 
-  constructor(private router: Router,
-              private dataService: QuestionnaireDataService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
