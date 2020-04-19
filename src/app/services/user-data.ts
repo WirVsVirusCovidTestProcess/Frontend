@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { UserOptions } from '../types/user-options';
 import { UserdataService } from './userdata.service';
+import { Store } from '@ngrx/store';
+import { State as AppState } from '../state';
+import * as QuestionActions from '../state/questions/questions.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,8 @@ export class UserData {
 
   constructor(
     public storage: Storage,
-    public userData: UserdataService
+    public userData: UserdataService,
+    private store: Store<AppState>
   ) { }
 
   retrieve(): Promise<UserOptions> {
@@ -35,9 +39,7 @@ export class UserData {
     this.storage.remove('user');
     this.storage.remove('contacts');
 
-    this.storage.remove('questionnaire_answers');
-    this.storage.remove('id');
-    this.storage.remove('riskScore');
+    this.store.dispatch(QuestionActions.resetQuestionnaire());
   }
 
   signup(user: UserOptions) {

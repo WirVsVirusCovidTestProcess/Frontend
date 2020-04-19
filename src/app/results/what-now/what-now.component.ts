@@ -13,11 +13,13 @@ export class WhatNowComponent implements OnInit {
   constructor(private router: Router, private dataService: QuestionnaireDataService) { }
 
   ngOnInit() {
-    if (!this.dataService.getRiskScore()) {
-      setTimeout(this.sendAnswers.bind(this), 500);
-    } else {
-      this.decide();
-    }
+    this.dataService.getRiskScore().subscribe((riskScore) => {
+      if (!riskScore) {
+        setTimeout(this.sendAnswers.bind(this), 500);
+      } else {
+        this.decide();
+      }
+    });
   }
 
   sendAnswers() {
@@ -46,13 +48,13 @@ export class WhatNowComponent implements OnInit {
   }
 
   decide() {
-    const riskScore = this.dataService.getRiskScore();
-    // TODO add correct riskScore decision
-    if (riskScore > 4) {
-      this.redirectToRiskGroup();
-    } else {
-      this.redirectToGreenlight();
-    }
+    this.dataService.getRiskScore().subscribe((riskScore) => {
+      if (riskScore > 4) {
+        this.redirectToRiskGroup();
+      } else {
+        this.redirectToGreenlight();
+      }
+    });
   }
 
   redirectToRiskGroup() {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserData } from '../../services/user-data';
 import { QuestionnaireDataService } from '../../services/questionnaireData.service';
 import { UserOptions } from '../../types/user-options';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { UserOptions } from '../../types/user-options';
 })
 export class AccountPage implements AfterViewInit, AfterContentInit {
   public user: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
-  questionnaireDataXML = 'NO DATA';
+  questionnaireDataXML: Observable<string> = of('NO DATA');
   contacts: Array<string> = [''];
 
   result = null;

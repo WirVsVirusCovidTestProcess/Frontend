@@ -57,7 +57,7 @@ export class QuestionPage implements OnInit {
       if (this.question.scoreMap && this.question.scoreMap.length > this.selectedOptionIndex) {
         return this.question.scoreMap[this.selectedOptionIndex].toString();
       } else {
-        return this.selectedOptionIndex;
+        return this.selectedOptionIndex.toString();
       }
     } else if (this.question.inputType === 'date') {
       return this.getDateString();
@@ -87,6 +87,7 @@ export class QuestionPage implements OnInit {
       nextURL = '/questions/' + nextQuestions[this.selectedOptionIndex];
     } else {
       if (nextQuestions === FLOW_RELEVANT_IDS.END) {
+        this.surveyService.setComplete();
         nextURL = '/results';
       } else {
         nextURL = '/questions/' + nextQuestions;

@@ -1,42 +1,22 @@
-import {Injectable} from '@angular/core';
-import {QuestionnaireAnswer} from '../types/questionnaireAnswer';
-import {Storage} from '@ionic/storage';
-import {HttpClient} from '@angular/common/http';
-import {QUESTION_XML_MAP} from '../types/questions';
+import { Injectable } from '@angular/core';
+import { QuestionnaireAnswer } from '../types/questionnaireAnswer';
+import { HttpClient } from '@angular/common/http';
+import { QUESTION_XML_MAP } from '../types/questions';
+import { Store } from '@ngrx/store';
+import { State as AppState } from '../state';
+import * as QuestionActions from '../state/questions/questions.actions';
+import * as QuestionSelectors from '../state/questions/questions.selector';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuestionnaireDataService {
-  private answers: Map<string, any>;
-  private id?: string;
-  private riskScore?: number;
-
   constructor(
-    private storage: Storage,
-    private http: HttpClient
+    private http: HttpClient,
+    private store: Store<AppState>
   ) {
-    this.answers = new Map<string, any>();
-
-    // Load answers from storage
-    this.storage.get('questionnaire_answers').then((values: QuestionnaireAnswer[]) => {
-      if (!values || values.length === 0) {
-        values = [];
-      }
-      values.forEach((value) => {
-        this.answers.set(value.key, value.value);
-      });
-    });
-    this.storage.get('id').then((id) => {
-      if (id) {
-        this.id = id;
-      }
-    });
-    this.storage.get('riskScore').then((riskScore) => {
-      if (riskScore) {
-        this.riskScore = riskScore;
-      }
-    });
   }
 
   private static convertAnswerToXML(answer: QuestionnaireAnswer): string {
@@ -44,115 +24,107 @@ export class QuestionnaireDataService {
     return `<${code}>${answer.value}</${code}>`;
   }
 
-  private getAnswers(): QuestionnaireAnswer[] {
-    const result: QuestionnaireAnswer[] = [];
-    this.answers.forEach((value, key) => {
-      result.push({
-        key,
-        value
-      });
-    });
-    return result;
+  private getAnswers(): Observable<QuestionnaireAnswer[]> {
+    return this.store.select(QuestionSelectors.selectAllAnswers);
   }
 
-  public deleteAllAnswers(): void {
-    this.answers.clear();
-    this.id = undefined;
-    this.saveToStorage();
-  }
-
-  public setAnswer(key: string, value: any): void {
-    this.answers.set(key, value);
-    this.saveToStorage();
-  }
-
-  public hasAnswer(key: string): boolean {
-    return this.answers.has(key);
-  }
-
-  public deleteAnswer(key: string): void {
-    this.answers.delete(key);
-    this.saveToStorage();
+  public setAnswer(key: string, value: string): void {
+    this.store.dispatch(QuestionActions.saveAnswer({key, value}));
   }
 
   public setId(id: string): void {
-    this.id = id;
-    this.saveToStorage();
+    this.store.dispatch(QuestionActions.setUserId({id}));
   }
 
-  public getRiskScore(): number | undefined {
-    return this.riskScore;
+  public getRiskScore(): Observable<number | undefined> {
+    return this.store.select(QuestionSelectors.selectRiskScore);
   }
 
-  private saveToStorage(): void {
-    this.storage.set('questionnaire_answers', this.getAnswers());
-    this.storage.set('id', this.id);
-    this.storage.set('riskScore', this.riskScore);
+  public isComplete(): Observable<boolean> {
+    return this.store.select(QuestionSelectors.selectQuestionnaireComplete);
   }
 
-  public hasAnswers(): boolean {
-    return this.answers.size > 0;
+  public setComplete(): void {
+    return this.store.dispatch(QuestionActions.setQuestionnaireComplete());
   }
 
   public sendAnswers(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post('https://covid-functionapp.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
-        Answers: this.toJSON()
-      }, {responseType: 'text'})
-        .subscribe(response => {
-          this.setId(response);
-          resolve(response);
-        }, error => {
-          console.error(error);
-          reject(error);
-        });
+      this.toJSON().subscribe((answers) => {
+        this.http.post('https://covid-functionapp.azurewebsites.net/api/SaveQuestionData?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
+          Answers: answers
+        }, {responseType: 'text'})
+          .subscribe(response => {
+            this.setId(response);
+            resolve(response);
+          }, error => {
+            console.error(error);
+            reject(error);
+          });
+      });
     });
   }
 
   public loadRiskScore(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post('https://covid-functionapp.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
-        Token: this.id
-      }).subscribe((data: any) => {
-        if (!data.riskScore) {
-          reject('RiskScore not available yet');
-        } else {
-          this.riskScore = data.riskScore;
-          this.saveToStorage();
-          resolve(data.riskScore);
-        }
-      }, (error) => {
-        console.error(error);
-        this.setMockRiskScore();
-        reject(error);
+      this.getId().subscribe((id) => {
+        this.http.post('https://covid-functionapp.azurewebsites.net/api/GetDataFromToken?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==', {
+          Token: id
+        }).subscribe((data: any) => {
+          if (!data.riskScore) {
+            reject('RiskScore not available yet');
+          } else {
+            this.setRiskScore(data.riskScore);
+            resolve(data.riskScore);
+          }
+        }, (error) => {
+          console.error(error);
+          this.setMockRiskScore();
+          reject(error);
+        });
       });
     });
   }
 
+  public setRiskScore(riskScore: number): void {
+    this.store.dispatch(QuestionActions.setRiskScore({riskScore}));
+  }
+
   public setMockRiskScore(): void {
-    this.riskScore = 30;
-    this.saveToStorage();
+    this.setRiskScore(30);
   }
 
-  public getId(): string {
-    return this.id;
+  public getId(): Observable<string | undefined> {
+    return this.store.select(QuestionSelectors.selectUserId);
   }
 
-  public toString(): string {
-    return this.getAnswers().map(answer => `<${answer.key}>${answer.value}</${answer.key}>`).join('; ');
+  public toString(): Observable<string> {
+    return this.getAnswers().pipe(map(answers => answers.map(answer => `<${answer.key}>${answer.value}</${answer.key}>`).join('; ')));
   }
 
-  public toJSON(): any {
-    return this.getAnswers().map((answer) => {
-      const code = QUESTION_XML_MAP.get(answer.key);
-      if (!code || code.length === 0 || !answer.value) {
-        return undefined;
-      }
-      return {[code]: answer.value};
-    }).filter(a => !!a);
+  public toJSON(): Observable<Record<string, string>> {
+    return this.getAnswers().pipe(
+      map((answers) => {
+        return answers.reduce((acc, answer: QuestionnaireAnswer): Record<string, string> => {
+          const code = QUESTION_XML_MAP.get(answer.key);
+          if (!code || code.length === 0 || !answer.value) {
+            return acc;
+          }
+          return {
+            ...acc,
+            [code]: answer.value
+          };
+        }, {});
+      })
+    );
   }
 
-  public toXML(): string {
-    return `<PATIENT>${this.getAnswers().map(QuestionnaireDataService.convertAnswerToXML).join('')}</PATIENT>`;
+  public toXML(): Observable<string> {
+    return this.getAnswers().pipe(
+      map((answers) => {
+        const arr = answers.map(QuestionnaireDataService.convertAnswerToXML);
+        return `<PATIENT>${arr.join('')}</PATIENT>`;
+      })
+    );
   }
 }

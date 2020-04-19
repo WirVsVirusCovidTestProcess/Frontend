@@ -61,7 +61,7 @@
                 </ion-card>
 
 
-                <qrcode (click)="showQRCode()" *ngIf="questionnaireDataXML" [qrdata]="questionnaireDataXML" [width]="256"
+                <qrcode (click)="showQRCode()" *ngIf="questionnaireDataXML" [qrdata]="questionnaireDataXML | async" [width]="256"
                         [errorCorrectionLevel]="'M'" class="qr-code"></qrcode>
 
 

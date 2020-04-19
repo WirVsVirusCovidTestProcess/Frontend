@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 
 import { MenuController } from '@ionic/angular';
 import {QuestionnaireDataService} from '../../services/questionnaireData.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'show-qr-code',
@@ -10,7 +11,7 @@ import {QuestionnaireDataService} from '../../services/questionnaireData.service
   styleUrls: ['./show-qr-code.scss'],
 })
 export class ShowQrCodePage {
-  questionnaireDataXML: string;
+  questionnaireDataXML: Observable<string>;
 
   constructor(
     public menu: MenuController,

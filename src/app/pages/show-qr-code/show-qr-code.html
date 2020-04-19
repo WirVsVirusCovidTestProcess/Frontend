@@ -10,10 +10,10 @@
   <h2 class="slide-title">
     {{ "qr_code.title" | translate }}
   </h2>
-  <qrcode [qrdata]="questionnaireDataXML" *ngIf="questionnaireDataXML" [width]="450" [errorCorrectionLevel]="'M'"></qrcode>
+  <qrcode [qrdata]="questionnaireDataXML | async" *ngIf="questionnaireDataXML" [width]="450" [errorCorrectionLevel]="'M'"></qrcode>
   <p>
     {{ "qr_code.contents" | translate }}
     <br>
-    {{ questionnaireDataXML }}
+    {{ questionnaireDataXML | async }}
   </p>
 </ion-content>
