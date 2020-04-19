@@ -16,10 +16,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './state';
-import { EffectsModule } from '@ngrx/effects';
-import { StorageSyncEffects } from 'ngrx-store-ionic-storage';
+import { RootStateModule } from './state';
 export function setTranslateLoader(http: HttpClient) {
  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -57,17 +54,7 @@ export class SharedModule {
      }
     }),
     SharedModule.forRoot(),
-    StoreModule.forRoot(reducers, {
-      metaReducers,
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      },
-      initialState: {
-        hydrated: false
-      }
-    }),
-    EffectsModule.forRoot([ StorageSyncEffects ])
+    RootStateModule
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
