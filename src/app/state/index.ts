@@ -5,11 +5,13 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as Questions from './questions/questions.reducer';
+import * as UserData from './userData/userData.reducer';
 import { storageSync } from 'ngrx-store-ionic-storage';
 import { StorageSyncEffects } from 'ngrx-store-ionic-storage';
 import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
 import { QuestionsStateModule } from './questions/questions.module';
+import { UserDataStateModule } from './userData/userData.module';
 import * as hydrated from './hydrated.reducer';
 
 
@@ -22,7 +24,7 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const storageSyncReducer = storageSync({
-  keys: [Questions.questionFeatureKey],
+  keys: [Questions.featureKey, UserData.featureKey],
   onSyncError: (err) => console.error(err)
 });
 
@@ -43,7 +45,8 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [sto
       }
     }),
     EffectsModule.forRoot([ StorageSyncEffects ]),
-    QuestionsStateModule
+    QuestionsStateModule,
+    UserDataStateModule
   ]
 })
 export class RootStateModule {}

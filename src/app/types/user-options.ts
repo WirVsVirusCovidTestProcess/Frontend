@@ -1,9 +1,9 @@
 
 export interface UserOptions {
-  Code: string;
-  Name: string;
-  Street: string;
-  Area: string;
-  Email: string;
-  Phone: string;
+  code: string;
+  name: string;
+  street: string;
+  area: string;
+  email: string;
+  phone: string;
 }

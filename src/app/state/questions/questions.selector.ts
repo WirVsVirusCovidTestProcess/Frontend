@@ -1,9 +1,9 @@
 import { createSelector } from '@ngrx/store';
 import { State as AppState } from '../';
-import { State as QuestionState, questionFeatureKey } from './questions.reducer';
+import { State as QuestionState, featureKey } from './questions.reducer';
 import { QuestionnaireAnswer } from '../../types/questionnaireAnswer';
 
-const getQuestionsState = (state: AppState) => state[questionFeatureKey];
+const getQuestionsState = (state: AppState) => state[featureKey];
 
 export const selectQuestionnaireComplete = createSelector(getQuestionsState, (state: QuestionState) => state.complete);
 export const selectUserId = createSelector(getQuestionsState, (state: QuestionState) => state.user_id);
