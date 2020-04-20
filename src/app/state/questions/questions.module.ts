@@ -4,7 +4,7 @@ import * as questions from './questions.reducer';
 
 @NgModule({
   imports: [
-    StoreModule.forFeature(questions.questionFeatureKey, questions.reducer)
+    StoreModule.forFeature(questions.featureKey, questions.reducer)
   ],
 })
 export class QuestionsStateModule {}

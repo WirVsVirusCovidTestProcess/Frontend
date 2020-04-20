@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as QuestionActions from './questions.actions';
 
-export const questionFeatureKey = 'questions';
+export const featureKey = 'questions';
 
 export interface State {
   answers: Map<string, string>;

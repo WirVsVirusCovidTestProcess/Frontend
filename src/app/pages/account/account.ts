@@ -1,88 +1,74 @@
-import { AfterViewInit, Component, AfterContentInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserData } from '../../services/user-data';
+import { UserDataService } from '../../services/userData.service';
 import { QuestionnaireDataService } from '../../services/questionnaireData.service';
 import { UserOptions } from '../../types/user-options';
-import { Observable, of } from 'rxjs';
+import { merge, Observable, of } from 'rxjs';
+import { filter, timeoutWith, delay, map } from 'rxjs/operators';
 
+interface Appointment {
+  time: string;
+  street: string;
+  area: string;
+}
 
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html',
   styleUrls: ['./account.scss'],
 })
-export class AccountPage implements AfterViewInit, AfterContentInit {
-  public user: UserOptions = { Code: '', Name: '', Street: '', Area: '', Email: '', Phone: '' };
+export class AccountPage implements AfterViewInit {
+  user: Observable<UserOptions>;
   questionnaireDataXML: Observable<string> = of('NO DATA');
-  contacts: Array<string> = [''];
+  contacts: Observable<Array<string>>;
 
-  result = null;
-  appointment = null;
+  result: Observable<{ value: string, color: string}>;
+  appointment: Observable<Appointment>;
 
   constructor(
     public router: Router,
-    public userData: UserData,
+    public userData: UserDataService,
     private questionnaireDataService: QuestionnaireDataService
-  ) { }
-
-
-  ngAfterContentInit(): void {
-    this.delay(3000).then(() => {
-      this.appointment = {
-        time: '24.03.2020 17:30 Uhr',
-        street: 'Marienhospital Stuttgart',
-        area: '70189 Stuttgart'
-      };
-    }).then(next =>
-      this.delay(5000).then(() => {
-        this.result = true;
-      })
-    );
+  ) {
   }
 
   getstatus(result) {
-    if (result == null) {
-      return 'light';
-    } else if (result) {
+    if (result === 'positive') {
       return 'danger';
-    } else {
+    } else if (result === 'negative') {
       return 'success';
+    } else {
+      return 'light';
     }
   }
 
   ngAfterViewInit() {
-    this.userData.contactCache().then(res => {
-        // mock contacts
-        this.contacts = ['Max Mustermann', 'Michael Müller'];
-    });
+    this.contacts = this.userData.getContactPersons().pipe(
+      filter(x => !!x),
+      timeoutWith(1000, of(['Michaela Mustermann', 'Michael Müller']))
+    );
 
-    this.userData.retrieve().then(result => {
-      // mock result
-/*       result = {
-        Name: 'Max Mustermann',
-        Street: 'Hauptstraße 1',
-        Code: 'Ps5ClfN10hHw1K38zzTo1zf6Y+KLXL',
-        Area: '12345 Berlin',
-        Email: 'test@example.com',
-        Phone: '+49 123456789'
-      }; */
-      this.user = result;
-    });
+    this.user = this.userData.getUserData().pipe(
+      filter(x => !!x)
+    );
+
+    this.appointment = of({
+      time: '24.03.2020 17:30 Uhr',
+      street: 'Marienhospital Stuttgart',
+      area: '70189 Stuttgart'
+    }).pipe(delay(3000));
+
+    this.result = merge(of('pending'), of('positive').pipe(delay(6000))).pipe(map(val => ({
+      value: val,
+      color: this.getstatus(val)
+    })));
 
     this.questionnaireDataXML = this.questionnaireDataService.toXML();
   }
 
-  async delay(ms: number) {
-    await new Promise(resolve => setTimeout(() => resolve(), ms));
-  }
-
   addContact() {
-
-    this.userData.clearCaches();
-    if (this.contacts.length < 5) {
-      this.contacts.push('');
-    }
+    this.userData.clearData();
   }
 
   showQRCode() {
