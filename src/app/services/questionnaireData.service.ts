@@ -127,4 +127,8 @@ export class QuestionnaireDataService {
       })
     );
   }
+
+  public clearQuestionnaire(): void {
+    return this.store.dispatch(QuestionActions.resetQuestionnaire());
+  }
 }

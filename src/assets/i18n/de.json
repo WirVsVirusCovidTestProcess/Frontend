@@ -38,7 +38,8 @@
       "title": "Sie scheinen zur Riskogruppe zu gehören",
       "text_1": "Wenn Sie möchten, melden Sie sich bei der Hotline der Senatsgesundheitsverwaltung (Tel. 030/9028 28 28) oder stellen Sie sich in einer der Untersuchungsstellen vor.",
       "text_2": "Wenn Sie das Haus verlassen, halten Sie ausreichend Abstand (mehr als 2 Meter) zu anderen Personen, fassen Sie möglichst nichts an und achten Sie auf die Regeln für richtiges Husten und Niesen. Bitte vermeiden Sie unnötige Kontakte zu anderen Personen und bleiben Sie nach Möglichkeit zu Hause.",
-      "appointment": "Zum Test-Termin"
+      "appointment": "Zum Test-Termin",
+      "start_over": "Fragebogen erneut starten"
     },
     "greenlight": {
       "title": "Bleiben Sie Zuhause",
@@ -49,7 +50,8 @@
       "text_2_prefix": "Achten Sie vermehrt auf ",
       "text_2_link": "gute Händehygiene",
       "text_2_suffix": ".",
-      "text_3": "Wenn Sie das Haus verlassen, halten Sie ausreichend Abstand (mehr als 2 Meter) zu anderen Personen, fassen Sie möglichst nichts an, und achten Sie auf die Regeln für richtiges Husten und Niesen."
+      "text_3": "Wenn Sie das Haus verlassen, halten Sie ausreichend Abstand (mehr als 2 Meter) zu anderen Personen, fassen Sie möglichst nichts an, und achten Sie auf die Regeln für richtiges Husten und Niesen.",
+      "start_over": "Fragebogen erneut starten"
     }
   },
   "signup": {
@@ -75,7 +77,8 @@
     },
     "patient_number": "Patientennummer",
     "contact_persons": "Kontaktpersonen",
-    "add_contact_person": "Kontaktperson hinzufügen"
+    "add_contact_person": "Kontaktperson hinzufügen",
+    "delete_data": "Daten löschen"
   },
   "qr_code": {
     "title": "QR-Code Scannen",

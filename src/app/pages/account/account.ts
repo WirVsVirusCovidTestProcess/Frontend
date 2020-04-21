@@ -67,8 +67,10 @@ export class AccountPage implements AfterViewInit {
     this.questionnaireDataXML = this.questionnaireDataService.toXML();
   }
 
-  addContact() {
+  deleteData() {
     this.userData.clearData();
+    this.questionnaireDataService.clearQuestionnaire();
+    this.router.navigateByUrl('/', { replaceUrl: true });
   }
 
   showQRCode() {
