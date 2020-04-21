@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {QuestionnaireDataService} from '../../services/questionnaireData.service';
+import {QuestionnaireDataService} from '../../../services/questionnaireData.service';
 
 @Component({
   selector: 'app-what-now',
