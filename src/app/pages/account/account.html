@@ -116,7 +116,8 @@
                     </ion-label>
                   </ion-item>
                 </ion-list>
-                <ion-button *ngIf="(contacts | async)?.length < 5 " (click)="addContact()">{{ "account.add_contact_person" | translate }}</ion-button>
+
+                <ion-button (click)="deleteData()" fill="outline" color="danger">{{ "account.delete_data" | translate }}</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>

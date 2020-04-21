@@ -38,7 +38,8 @@
       "title": "You appear to belong to a high risk group",
       "text_1": "If you want, report yourself to the hotline of the health administration (Phone 030/9028 28 28) or present yourself at a examination center.",
       "text_2": "If you leave the house, please keep enough distance (more than 2 metres) to other people, do not touch anything, if possible, and pay attention to the rules for correct coughing and sneezing. Please avoid unnecessary contact with other persons and stay at home.",
-      "appointment": "Get a testing appointment"
+      "appointment": "Get a testing appointment",
+      "start_over": "Restart Questionnaire"
     },
     "greenlight": {
       "title": "Stay at home",
@@ -49,7 +50,8 @@
       "text_2_prefix": "Please mind the ",
       "text_2_link": "good hand hygiene",
       "text_2_suffix": ".",
-      "text_3": "If you leave the house, please keep enough distance (more than 2 metres) to other people, do not touch anything, if possible, and pay attention to the rules for correct coughing and sneezing."
+      "text_3": "If you leave the house, please keep enough distance (more than 2 metres) to other people, do not touch anything, if possible, and pay attention to the rules for correct coughing and sneezing.",
+      "start_over": "Restart Questionnaire"
     }
   },
   "signup": {
@@ -75,7 +77,8 @@
     },
     "patient_number": "Patient Number",
     "contact_persons": "Contact Person",
-    "add_contact_person": "Add Contact Person"
+    "add_contact_person": "Add Contact Person",
+    "delete_data": "Delete Data"
   },
   "qr_code": {
     "title": "Scan QR-Code",
