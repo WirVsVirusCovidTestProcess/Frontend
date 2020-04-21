@@ -19,29 +19,29 @@ export class UserDataService {
     private http: HttpClient
   ) { }
 
-  getUserData(): Observable<UserOptions> {
+  public getUserData(): Observable<UserOptions> {
     return this.store.select(UserDataSelectors.selectUserData);
   }
 
-  getContactPersons(): Observable<Array<string>> {
+  public getContactPersons(): Observable<Array<string>> {
     return this.store.select(UserDataSelectors.selectContactPersons);
   }
 
-  saveContactPersons(contactPersons: Array<string>): void {
+  public saveContactPersons(contactPersons: Array<string>): void {
     this.store.dispatch(UserDataActions.setContactPersons({ contactPersons }));
   }
 
-  clearData() {
+  public clearData() {
     this.store.dispatch(UserDataActions.clearUserData());
     this.store.dispatch(QuestionActions.resetQuestionnaire());
   }
 
-  signup(user: UserOptions): Promise<any> {
+  public signup(user: UserOptions): Promise<any> {
     this.store.dispatch(UserDataActions.storeUserData({ data: user }));
     return this.sendUserData(user);
   }
 
-  public sendUserData(user: UserOptions): Promise<any> {
+  private sendUserData(user: UserOptions): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.post('https://covid-functionapp.azurewebsites.net/api/AddUserInformation?code=hM41ZqXlPp8kVnGgujM0daabAH0BQ46uDCX8y51XRPztfqn6CSMLAA==',
         {
@@ -54,5 +54,9 @@ export class UserDataService {
           resolve(response);
         });
     });
+  }
+
+  public hasUserData(): Observable<boolean> {
+    return this.store.select(UserDataSelectors.selectHasUserData);
   }
 }
